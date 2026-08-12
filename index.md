@@ -5,4 +5,4 @@ permalink: /
 
 # Adam Mendoza 
 
-Hi! I'm Adam (lol)
+Hi! I'm Adam Mendoza 

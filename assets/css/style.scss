@@ -3,6 +3,14 @@
 
 @import "{{ site.theme }}";
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 .site-nav {
   width: 100%;
   background: #242424;
@@ -13,7 +21,7 @@
 .nav-inner {
   width: 1100px;
   max-width: calc(100% - 80px);
-  margin: 0 0 0 10%;
+  margin: 0 auto;
   min-height: 64px;
   display: flex;
   align-items: center;
@@ -25,6 +33,7 @@
   font-size: 24px;
   font-weight: 500;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-name:hover {
@@ -41,10 +50,74 @@
   color: #d0d0d0;
   font-size: 18px;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
   color: #ffffff;
+}
+
+.wrapper {
+  width: 1100px;
+  max-width: calc(100% - 80px);
+  margin: 0 auto;
+}
+
+header {
+  width: 300px;
+}
+
+.sidebar-profile {
+  text-align: center;
+}
+
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+.sidebar-profile h1 {
+  margin-bottom: 10px;
+}
+
+.sidebar-profile h1 a {
+  text-decoration: none;
+}
+
+.sidebar-profile p {
+  margin-top: 0;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+section {
+  width: 650px;
+}
+
+footer {
+  display: none;
 }
 
 @media print, screen and (max-width: 960px) {
@@ -55,7 +128,7 @@
   .nav-inner {
     width: auto;
     max-width: none;
-    margin: 0 40px;
+    margin: 0 30px;
   }
 
   .nav-links {
@@ -68,5 +141,37 @@
 
   .nav-links a {
     font-size: 16px;
+  }
+
+  .wrapper {
+    width: auto;
+    max-width: none;
+    margin: 0 40px;
+  }
+
+  header {
+    width: auto;
+  }
+
+  section {
+    width: auto;
+  }
+
+  .profile-photo {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .nav-inner {
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 0;
+  }
+
+  .nav-links {
+    gap: 18px;
   }
 }

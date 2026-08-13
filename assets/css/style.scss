@@ -3,70 +3,70 @@
 
 @import "{{ site.theme }}";
 
-.wrapper {
+.site-nav {
+  width: 100%;
+  background: #242424;
+  border-bottom: 1px solid #444;
+  margin-bottom: 50px;
+}
+
+.nav-inner {
   width: 1100px;
   max-width: calc(100% - 80px);
   margin: 0 0 0 10%;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-header {
-  width: 300px;
-}
-
-.sidebar-profile {
-  text-align: center;
-}
-
-.profile-photo {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-  margin: 0 auto 20px auto;
-}
-
-.sidebar-profile h1 {
-  margin-bottom: 10px;
-}
-
-.sidebar-profile h1 a {
+.nav-name {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
   text-decoration: none;
 }
 
-.sidebar-profile p {
-  margin-top: 0;
+.nav-name:hover {
+  color: #ffffff;
 }
 
-.social-links {
+.nav-links {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 18px;
-  margin-top: 24px;
+  gap: 42px;
 }
 
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.nav-links a {
+  color: #d0d0d0;
+  font-size: 18px;
+  text-decoration: none;
 }
 
-.social-links img {
-  width: 30px;
-  height: 30px;
-  display: block;
+.nav-links a:hover {
+  color: #ffffff;
 }
 
 @media print, screen and (max-width: 960px) {
-  .wrapper {
+  .site-nav {
+    margin-bottom: 30px;
+  }
+
+  .nav-inner {
     width: auto;
     max-width: none;
     margin: 0 40px;
   }
 
-  .profile-photo {
-    width: 140px;
-    height: 140px;
+  .nav-links {
+    gap: 20px;
+  }
+
+  .nav-name {
+    font-size: 20px;
+  }
+
+  .nav-links a {
+    font-size: 16px;
   }
 }

@@ -22,8 +22,12 @@
         <h1><a href="{{ "/" | absolute_url }}">Adam Mendoza</a></h1>
         {% if site.description %}<p>{{ site.description }}</p>{% endif %}
         <div class="social-links">
-          <a href="https://github.com/xxtofff">GitHub</a>
-          <a href="https://www.linkedin.com/in/gadmendoza/">LinkedIn</a>
+          <a href="https://github.com/xxtofff" aria-label="GitHub">
+            <img src="{{ "/assets/images/github.svg" | relative_url }}" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/gadmendoza/" aria-label="LinkedIn">
+            <img src="{{ "/assets/images/linkedin.svg" | relative_url }}" alt="LinkedIn">
+          </a>
         </div>
       </div>
     </header>

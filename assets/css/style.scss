@@ -6,6 +6,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 html {
@@ -124,23 +125,104 @@ footer {
   display: none;
 }
 
-@media print, screen and (max-width: 960px) {
+@media screen and (max-width: 960px) {
+  .site-nav {
+    margin-bottom: 35px;
+  }
+
+  .nav-inner {
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    margin: 0;
+    padding: 18px 20px;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .nav-name {
+    font-size: 22px;
+  }
+
+  .nav-links {
+    gap: 28px;
+  }
+
+  .nav-links a {
+    font-size: 17px;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 25px;
+  }
+
+  header {
+    width: 100%;
+    float: none;
+  }
+
+  .sidebar-profile {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 18px;
+  }
+
+  .sidebar-profile h1 {
+    font-size: 34px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .sidebar-profile p {
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .social-links {
+    margin-top: 20px;
+    gap: 20px;
+  }
+
+  .social-links img {
+    width: 34px;
+    height: 34px;
+  }
+
+  section {
+    width: 100%;
+    float: none;
+    margin-top: 45px;
+  }
+}
+
+@media screen and (max-width: 500px) {
   .site-nav {
     margin-bottom: 30px;
   }
 
   .nav-inner {
-    width: auto;
-    max-width: none;
-    margin: 0 30px;
-  }
-
-  .nav-links {
-    gap: 20px;
+    padding: 16px 15px;
+    gap: 12px;
   }
 
   .nav-name {
-    font-size: 20px;
+    font-size: 21px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 24px;
   }
 
   .nav-links a {
@@ -148,34 +230,29 @@ footer {
   }
 
   .wrapper {
-    width: auto;
-    max-width: none;
-    margin: 0 40px;
-  }
-
-  header {
-    width: auto;
-  }
-
-  section {
-    width: auto;
+    padding: 0 20px;
   }
 
   .profile-photo {
-    width: 140px;
-    height: 140px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .nav-inner {
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-    padding: 14px 0;
+    width: 110px;
+    height: 110px;
   }
 
-  .nav-links {
-    gap: 18px;
+  .sidebar-profile h1 {
+    font-size: 30px;
+  }
+
+  .sidebar-profile p {
+    font-size: 17px;
+    line-height: 1.45;
+  }
+
+  .social-links img {
+    width: 32px;
+    height: 32px;
+  }
+
+  section {
+    margin-top: 40px;
   }
 }

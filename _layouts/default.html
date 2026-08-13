@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+  {% if site.google_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '{{ site.google_analytics }}');</script>
+  {% endif %}
+  <meta charset="utf-8">
+  {% if site.description %}<meta name="description" content="{{ site.description }}">{% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="sidebar-profile">
+        <a href="{{ "/" | absolute_url }}">
+          <img src="{{ "/assets/images/profile.jpg" | relative_url }}" alt="Adam Mendoza" class="profile-photo">
+        </a>
+        <h1><a href="{{ "/" | absolute_url }}">Adam Mendoza</a></h1>
+        {% if site.description %}<p>{{ site.description }}</p>{% endif %}
+        <div class="social-links">
+          <a href="https://github.com/xxtofff">GitHub</a>
+          <a href="https://www.linkedin.com/in/gadmendoza/">LinkedIn</a>
+        </div>
+      </div>
+    </header>
+    <section>
+      {{ content }}
+    </section>
+    <footer>
+      {% if site.github.is_project_page %}<p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>{% endif %}
+      <p>Hosted on GitHub Pages</p>
+    </footer>
+  </div>
+</body>
+</html>

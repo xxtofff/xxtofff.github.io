@@ -17,11 +17,11 @@ The most valuable lessons I carry from physics are not how to construct the Lagr
 ## Education
 
 **University of the Philippines – Diliman** \
-*Master of Science in Physics* (Aug 2024 – Jul 2026)
+*Master of Science in Physics* (Aug 2024 – Jul 2026) \
 DOST-ASTHRDP Scholar
 
 **University of the Philippines – Diliman** \
-*Bachelor of Science in Physics* (Aug 2019 – Jul 2024)
+*Bachelor of Science in Physics* (Aug 2019 – Jul 2024) \
 DOST-SEI Merit Scholar
 
 ## Research Experience

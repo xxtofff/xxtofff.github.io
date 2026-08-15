@@ -7,7 +7,7 @@ Hi! I’m Adam, an aspiring data scientist from the Philippines. I recently comp
 
 Outside of physics and data, I scour the Metro for Filipiniana books, attend art fairs, watch movies, especially free screenings, and go to the theater. I also enjoy listening to music while I work.
 
-## Let’s connect
+## Let’s connect!
 
 If you have any opportunities in data science, quantitative analysis, or related fields for me, or if you just want to talk about anything under the sun, feel free to hit me up!
 

@@ -3,10 +3,8 @@
 
 @import "{{ site.theme }}";
 
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+:root {
+  --nav-height: 64px;
 }
 
 html {
@@ -17,20 +15,27 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  margin: 0;
+  padding: var(--nav-height) 0 0 0;
+  overflow-x: hidden;
+}
+
 .site-nav {
   width: 100%;
+  height: var(--nav-height);
   background: #242424;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 1000;
-  margin-bottom: 35px;
 }
 
 .nav-inner {
   width: 1100px;
   max-width: calc(100% - 80px);
+  height: 100%;
   margin: 0 auto;
-  min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -129,17 +134,21 @@ footer {
 }
 
 @media screen and (max-width: 960px) {
+  :root {
+    --nav-height: 125px;
+  }
+
   .site-nav {
-    margin-bottom: 35px;
+    height: var(--nav-height);
   }
 
   .nav-inner {
     width: 100%;
     max-width: none;
-    min-height: 0;
     margin: 0;
     padding: 18px 20px;
     flex-direction: column;
+    justify-content: center;
     gap: 14px;
   }
 
@@ -209,8 +218,12 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
+  :root {
+    --nav-height: 120px;
+  }
+
   .site-nav {
-    margin-bottom: 30px;
+    height: var(--nav-height);
   }
 
   .nav-inner {

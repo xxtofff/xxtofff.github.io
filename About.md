@@ -33,8 +33,6 @@ My research focused on black hole–dark matter spacetimes and the study of geod
 
 ## Selected Data & Scientific Computing Work
 
-Alongside my physics research, I have been developing projects in statistical analysis, machine learning, and scientific computing. My recent work includes:
-
 - **Customer Churn Prediction** — Developed and tuned Logistic Regression, Random Forest, XGBoost, CatBoost, and LightGBM models using cross-validation and a stratified holdout test set. LightGBM achieved the best holdout F1 score of 0.855, while XGBoost achieved the highest recall of 0.792.
 - **Inflation Forecasting** — Forecasted monthly Philippine inflation using SARIMA, SARIMAX, and XGBoost with engineered macroeconomic features, benchmarking against naive and seasonal-naive baselines.
 - **Marketing A/B Testing** — Estimated the causal effect of an advertising treatment using bootstrap confidence intervals and permutation testing, and distinguished the treatment effect from non-causal exposure associations.

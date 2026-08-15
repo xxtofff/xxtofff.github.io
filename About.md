@@ -1,8 +1,8 @@
---
+---
 layout: page
 title: "About"
 permalink: /about/
---
+---
 
 I am currently making the transition from physics to data science. I graduated cum laude with a BS in Physics from the National Institute of Physics, University of the Philippines Diliman, and recently completed my MS in Physics at the same institute. My research focused on gravitation, particularly the analytical and numerical modeling of astrophysical mass distributions around black holes. Alongside my physics work, I have been developing statistics and machine learning projects using publicly available datasets, both to deepen my understanding and to demonstrate what I can do with data.
 

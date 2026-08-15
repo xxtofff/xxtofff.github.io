@@ -1,58 +1,9 @@
-<!doctype html>
-<html lang="{{ site.lang | default: "en-US" }}">
-<head>
-  {% if site.google_analytics %}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '{{ site.google_analytics }}');</script>
-  {% endif %}
-  <meta charset="utf-8">
-  {% if site.description %}<meta name="description" content="{{ site.description }}">{% endif %}
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-  <link rel="icon" type="image/png" href="{{ "/assets/images/favicon.png" | relative_url }}">
-  <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-</head>
-<body>
-  <nav class="site-nav">
-    <div class="nav-inner">
-      <a class="nav-name" href="{{ "/" | relative_url }}">Adam Mendoza</a>
+---
+layout: default
+---
 
-      <div class="nav-links">
-        <a href="{{ "/about/" | relative_url }}">About</a>
-        <a href="{{ "/research/" | relative_url }}">Research</a>
-        <a href="{{ "/projects/" | relative_url }}">Projects</a>
-        <a href="{{ "/musings/" | relative_url }}">Musings</a>
-      </div>
-    </div>
-  </nav>
+{% if page.title %}
+<h1>{{ page.title }}</h1>
+{% endif %}
 
-  <div class="wrapper">
-    <header>
-      <div class="sidebar-profile">
-        <a href="{{ "/" | absolute_url }}">
-          <img src="{{ "/assets/images/profile.jpg" | relative_url }}" alt="Adam Mendoza" class="profile-photo">
-        </a>
-        <h1><a href="{{ "/" | absolute_url }}">Adam Mendoza</a></h1>
-        {% if site.description %}<p>{{ site.description }}</p>{% endif %}
-        <div class="social-links">
-          <a href="https://github.com/xxtofff" aria-label="GitHub">
-            <img src="{{ "/assets/images/github.svg" | relative_url }}" alt="GitHub">
-          </a>
-          <a href="https://www.linkedin.com/in/gadmendoza/" aria-label="LinkedIn">
-            <img src="{{ "/assets/images/linkedin.svg" | relative_url }}" alt="LinkedIn">
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <section>
-      {% if page.title %}
-      <h1>{{ page.title }}</h1>
-      {% endif %}
-
-      {{ content }}
-    </section>
-  </div>
-</body>
-</html>
+{{ content }}

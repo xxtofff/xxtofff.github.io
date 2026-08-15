@@ -31,12 +31,11 @@ DOST-SEI Merit Scholar
 
 My research focused on black hole–dark matter spacetimes and the study of geodesic observables in modified gravitational backgrounds. I derived analytical and numerical solutions to the Einstein field equations using isotropic-coordinate relativistic models with Einstein cluster matter distributions, implemented numerical integration methods in Python and symbolic computations in Mathematica, and authored and presented three peer-reviewed papers at Samahang Pisika ng Pilipinas conferences. 
 
-## Selected Data & Scientific Computing Work
+## Projects
 
 - **Customer Churn Prediction** — Developed and tuned Logistic Regression, Random Forest, XGBoost, CatBoost, and LightGBM models using cross-validation and a stratified holdout test set. LightGBM achieved the best holdout F1 score of 0.855, while XGBoost achieved the highest recall of 0.792.
 - **Inflation Forecasting** — Forecasted monthly Philippine inflation using SARIMA, SARIMAX, and XGBoost with engineered macroeconomic features, benchmarking against naive and seasonal-naive baselines.
 - **Marketing A/B Testing** — Estimated the causal effect of an advertising treatment using bootstrap confidence intervals and permutation testing, and distinguished the treatment effect from non-causal exposure associations.
-- **Pulsar Light Curve Analysis** — Built a numerical pipeline using mean squared displacement, wavelet transforms, and Fourier-based detrending to quantify temporal correlations and variability. 
 
 More details and code are available on my [Projects](/projects/) page.
 
@@ -50,8 +49,8 @@ I was a member of the Academic Affairs and Internal Affairs committees of the UP
 
 ## Publications
 
-Rodrigo, J. M. N., Villarin, J. L., Geraldez, L., Mendoza, G. A. D., & Vega, I. (2021). *Dynamics of Newtonian and relativistic thin fluid shells.* Proceedings of the Samahang Pisika ng Pilipinas 39, [SPP-2021-PC-06](https://proceedings.spp-online.org/article/view/SPP-2021-PC-06).
+Mendoza, G. A. D., Villanueva, J. A. N., & Vega, M. F. I. G. (2024). *Compact binary inspirals inside a galactic dark matter halo.* Proceedings of the Samahang Pisika ng Pilipinas 42, [SPP-2024-PB-09](https://proceedings.spp-online.org/article/view/SPP-2024-PB-09).
 
 Mendoza, A., Villanueva, J. A., & Vega, M. F. I. G. (2023). *Bound orbits around a black hole surrounded by a galaxy.* Proceedings of the Samahang Pisika ng Pilipinas 41, [SPP-2023-PB-24](https://proceedings.spp-online.org/article/view/SPP-2023-PB-24).
 
-Mendoza, G. A. D., Villanueva, J. A. N., & Vega, M. F. I. G. (2024). *Compact binary inspirals inside a galactic dark matter halo.* Proceedings of the Samahang Pisika ng Pilipinas 42, [SPP-2024-PB-09](https://proceedings.spp-online.org/article/view/SPP-2024-PB-09).
+Rodrigo, J. M. N., Villarin, J. L., Geraldez, L., Mendoza, G. A. D., & Vega, I. (2021). *Dynamics of Newtonian and relativistic thin fluid shells.* Proceedings of the Samahang Pisika ng Pilipinas 39, [SPP-2021-PC-06](https://proceedings.spp-online.org/article/view/SPP-2021-PC-06).

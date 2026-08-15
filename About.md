@@ -16,17 +16,17 @@ The most valuable lessons I carry from physics are not how to construct the Lagr
 
 ## Education
 
-**University of the Philippines – Diliman**
+**University of the Philippines – Diliman** \
 *Master of Science in Physics* (Aug 2024 – Jul 2026)
 DOST-ASTHRDP Scholar
 
-**University of the Philippines – Diliman**
+**University of the Philippines – Diliman** \
 *Bachelor of Science in Physics* (Aug 2019 – Jul 2024)
 DOST-SEI Merit Scholar
 
 ## Research Experience
 
-**University of the Philippines – Diliman**
+**University of the Philippines – Diliman** \
 *Student Researcher* (Sep 2021 – Jun 2026)
 
 My research focused on black hole–dark matter spacetimes and the study of geodesic observables in modified gravitational backgrounds. I derived analytical and numerical solutions to the Einstein field equations using isotropic-coordinate relativistic models with Einstein cluster matter distributions, implemented numerical integration methods in Python and symbolic computations in Mathematica, and authored and presented three peer-reviewed papers at Samahang Pisika ng Pilipinas conferences. 

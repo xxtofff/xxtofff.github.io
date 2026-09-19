@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>linear_regression_from_scratch</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Linear Regression from Scratch</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7300,6 +7300,9 @@ a.anchor-link {
         // MathJax loaded
             MathJax.Hub.Config({
                 TeX: {
+                    Macros: {
+                        bm: ["{\\boldsymbol{#1}}", 1]
+                    },
                     equationNumbers: {
                     autoNumber: "AMS",
                     useLabelIds: true
@@ -7793,8 +7796,82 @@ a.anchor-link {
     white-space: normal;
   }
 </style>
-<!-- End of mermaid configuration --></head>
+<!-- End of mermaid configuration -->
+<style>
+.site-nav {
+  width: 100%;
+  height: 64px;
+  background: #242424;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.nav-inner {
+  width: 1100px;
+  max-width: calc(100% - 80px);
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-name {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.nav-links a {
+  color: #d0d0d0;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+body.jp-Notebook {
+  padding-top: 64px !important;
+}
+
+@media screen and (max-width: 960px) {
+  .nav-inner {
+    max-width: calc(100% - 40px);
+  }
+
+  .nav-name {
+    font-size: 22px;
+  }
+
+  .nav-links a {
+    font-size: 17px;
+  }
+}
+</style>
+</head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-name" href="/">Adam Mendoza</a>
+    <div class="nav-links">
+      <a href="/about/">About</a>
+      <a href="/notes/">Notes</a>
+    </div>
+  </div>
+</nav>
+
 <main>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d7a5946d">
 <div class="jp-Cell-inputWrapper" tabindex="0">

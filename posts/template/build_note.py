@@ -33,15 +33,6 @@ html {
   box-sizing: inherit;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body.jp-Notebook {
-  padding-top: 64px !important;
-  overflow-x: hidden !important;
-}
-
 .site-nav {
   width: 100%;
   height: 64px;
@@ -51,6 +42,7 @@ body.jp-Notebook {
   left: 0;
   z-index: 1000;
   font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .nav-inner {
@@ -101,6 +93,11 @@ body.jp-Notebook {
   font-weight: 700 !important;
 }
 
+body.jp-Notebook {
+  padding-top: 64px !important;
+  overflow-x: hidden !important;
+}
+
 body.jp-Notebook > main {
   width: 1250px !important;
   max-width: calc(100% - 80px) !important;
@@ -129,7 +126,6 @@ body.jp-Notebook > main {
 .jp-RenderedHTMLCommon h3,
 .jp-RenderedHTMLCommon h4 {
   line-height: 1.25 !important;
-  scroll-margin-top: 90px !important;
 }
 
 .jp-RenderedHTMLCommon h1 {
@@ -159,117 +155,6 @@ body.jp-Notebook > main {
   overflow-x: auto;
 }
 
-/* =========================
-   Table of contents
-   ========================= */
-
-.note-toc {
-  position: fixed;
-  top: 94px;
-  left: max(20px, calc(50% - 625px - 280px));
-  width: 230px;
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
-  z-index: 900;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.note-toc.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-20px);
-}
-
-.note-toc-title {
-  margin: 0 0 12px 0;
-  color: #242424;
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.note-toc ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.note-toc li {
-  margin: 0;
-  padding: 0;
-}
-
-.note-toc li.toc-h3 {
-  padding-left: 14px;
-}
-
-.note-toc a {
-  display: block;
-  padding: 4px 0;
-  color: #777777 !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 1.45;
-  text-decoration: none !important;
-}
-
-.note-toc a:hover {
-  color: #242424 !important;
-  font-weight: 700 !important;
-}
-
-.note-toc a.active {
-  color: #242424 !important;
-  font-weight: 700 !important;
-}
-
-.toc-toggle {
-  position: fixed;
-  top: 82px;
-  left: 20px;
-  z-index: 950;
-  border: none;
-  background: #242424;
-  color: #ffffff;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 8px 12px;
-  border-radius: 3px;
-  cursor: pointer;
-  display: none;
-}
-
-.toc-toggle:hover {
-  font-weight: 700;
-}
-
-body.toc-hidden .note-toc {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-20px);
-}
-
-body.toc-hidden .toc-toggle {
-  display: block;
-}
-
-/* =========================
-   Responsive
-   ========================= */
-
-@media screen and (max-width: 1500px) {
-  .note-toc {
-    left: 20px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .note-toc {
-    width: 200px;
-  }
-}
-
 @media screen and (max-width: 960px) {
   .nav-inner {
     width: 100%;
@@ -297,25 +182,6 @@ body.toc-hidden .toc-toggle {
     width: 100% !important;
     max-width: none !important;
     padding: 30px 25px 50px 25px !important;
-  }
-
-  .note-toc {
-    top: 145px;
-    left: 20px;
-    width: min(260px, calc(100vw - 40px));
-    max-height: calc(100vh - 165px);
-    padding: 16px;
-    background: var(--jp-layout-color0);
-    border: 1px solid var(--jp-border-color2);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  }
-
-  .toc-toggle {
-    display: block;
-  }
-
-  body.toc-hidden .toc-toggle {
-    display: block;
   }
 }
 
@@ -354,14 +220,6 @@ body.toc-hidden .toc-toggle {
   .jp-RenderedHTMLCommon {
     font-size: 17px !important;
   }
-
-  .note-toc {
-    top: 140px;
-  }
-
-  .toc-toggle {
-    top: 130px;
-  }
 }
 </style>
 """
@@ -377,70 +235,6 @@ header_html = """
     </div>
   </div>
 </nav>
-
-<button class="toc-toggle" id="toc-toggle" type="button">Contents</button>
-
-<aside class="note-toc" id="note-toc">
-  <div class="note-toc-title">Contents</div>
-  <ul id="toc-list"></ul>
-</aside>
-"""
-
-toc_script = """
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const toc = document.getElementById("note-toc");
-  const tocList = document.getElementById("toc-list");
-  const toggle = document.getElementById("toc-toggle");
-  const headings = document.querySelectorAll("main h2, main h3");
-
-  headings.forEach((heading, index) => {
-    if (!heading.id) heading.id = "section-" + index;
-
-    const li = document.createElement("li");
-    li.className = heading.tagName.toLowerCase() === "h3" ? "toc-h3" : "toc-h2";
-
-    const link = document.createElement("a");
-    link.href = "#" + heading.id;
-    link.textContent = heading.textContent.replace("¶", "").trim();
-
-    link.addEventListener("click", () => {
-      document.body.classList.remove("toc-hidden");
-      setTimeout(() => {
-        heading.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 0);
-    });
-
-    li.appendChild(link);
-    tocList.appendChild(li);
-  });
-
-  toggle.addEventListener("click", () => {
-    document.body.classList.toggle("toc-hidden");
-    toggle.textContent = document.body.classList.contains("toc-hidden") ? "Contents" : "Hide contents";
-  });
-
-  const links = Array.from(tocList.querySelectorAll("a"));
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          links.forEach(link => link.classList.remove("active"));
-          const activeLink = tocList.querySelector('a[href="#' + entry.target.id + '"]');
-          if (activeLink) activeLink.classList.add("active");
-        }
-      });
-    },
-    {
-      rootMargin: "-90px 0px -70% 0px",
-      threshold: 0
-    }
-  );
-
-  headings.forEach(heading => observer.observe(heading));
-});
-</script>
 """
 
 html = html.replace("</head>", header_css + "</head>", 1)
@@ -450,8 +244,6 @@ html = html.replace(
     '<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">' + header_html,
     1
 )
-
-html = html.replace("</body>", toc_script + "</body>", 1)
 
 html_file.write_text(html, encoding="utf-8")
 generated_file.unlink()

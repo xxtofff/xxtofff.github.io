@@ -23,6 +23,14 @@ html = html.replace("""MathJax.Hub.Config({
 
 header_css = """
 <style>
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 .site-nav {
   width: 100%;
   height: 64px;
@@ -30,8 +38,7 @@ header_css = """
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  z-index: 1000;
 }
 
 .nav-inner {
@@ -54,7 +61,6 @@ header_css = """
 
 .nav-name:hover {
   color: #ffffff !important;
-  font-weight: 500;
 }
 
 .nav-links {
@@ -73,7 +79,6 @@ header_css = """
 
 .nav-links a:hover {
   color: #ffffff !important;
-  font-weight: 600;
 }
 
 body.jp-Notebook {
@@ -139,8 +144,22 @@ body.jp-Notebook > main {
 }
 
 @media screen and (max-width: 960px) {
+  :root {
+    --nav-height: 125px;
+  }
+
+  .site-nav {
+    height: var(--nav-height);
+  }
+
   .nav-inner {
-    max-width: calc(100% - 40px);
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 18px 20px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
   }
 
   .nav-name {
@@ -162,16 +181,17 @@ body.jp-Notebook > main {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
+  :root {
+    --nav-height: 120px;
+  }
+
   .site-nav {
-    height: 110px;
+    height: var(--nav-height);
   }
 
   .nav-inner {
-    max-width: none;
-    padding: 15px 20px;
-    flex-direction: column;
-    justify-content: center;
+    padding: 16px 15px;
     gap: 12px;
   }
 
@@ -180,6 +200,8 @@ body.jp-Notebook > main {
   }
 
   .nav-links {
+    width: 100%;
+    justify-content: center;
     gap: 24px;
   }
 
@@ -188,7 +210,7 @@ body.jp-Notebook > main {
   }
 
   body.jp-Notebook {
-    padding-top: 110px !important;
+    padding-top: 120px !important;
   }
 
   body.jp-Notebook > main {
@@ -206,6 +228,7 @@ header_html = """
 <nav class="site-nav">
   <div class="nav-inner">
     <a class="nav-name" href="/">Adam Mendoza</a>
+
     <div class="nav-links">
       <a href="/about/">About</a>
       <a href="/notes/">Notes</a>
@@ -214,17 +237,13 @@ header_html = """
 </nav>
 """
 
-theme_script = """
-<script>
-const savedTheme = localStorage.getItem("theme");
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-if (savedTheme === "dark" || (!savedTheme && prefersDark)) document.body.classList.add("dark-mode");
-</script>
-"""
-
 html = html.replace("</head>", header_css + "</head>", 1)
-html = html.replace('<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">', '<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">' + header_html, 1)
-html = html.replace("</body>", theme_script + "</body>", 1)
+
+html = html.replace(
+    '<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">',
+    '<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">' + header_html,
+    1
+)
 
 html_file.write_text(html, encoding="utf-8")
 generated_file.unlink()

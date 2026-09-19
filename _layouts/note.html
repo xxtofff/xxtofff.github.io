@@ -1,0 +1,55 @@
+---
+---
+
+<!doctype html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+  {% if site.google_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '{{ site.google_analytics }}');</script>
+  {% endif %}
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      packages: {'[+]': ['ams']}
+    }
+  };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <meta charset="utf-8">
+  {% if site.description %}<meta name="description" content="{{ site.description }}">{% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>{{ page.title | default: site.title }}</title>
+
+  <link rel="icon" type="image/png" href="{{ "/assets/images/favicon.png" | relative_url }}">
+  <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+</head>
+
+<body>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-name" href="{{ "/" | relative_url }}">Adam Mendoza</a>
+
+      <div class="nav-links">
+        <a href="{{ "/about/" | relative_url }}">About</a>
+        <a href="{{ "/notes/" | relative_url }}">Notes</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="note-wrapper">
+    <article class="note-content">
+      {% if page.title %}
+      <h1>{{ page.title }}</h1>
+      {% endif %}
+
+      {{ content }}
+    </article>
+  </main>
+</body>
+</html>

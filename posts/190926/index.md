@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: note
 title: "Linear Regression from Scratch"
 permalink: /notes/linear-regression-from-scratch/
 ---
@@ -14,9 +14,9 @@ This notebook is an attempt to introduce linear regression together with some st
 
 Assume that a collection of measurements $\{(X_i,Y_i)\}_{i=1}^N$ is linearly related:
 
-\begin{align*}
+\begin{aligned}
 Y_i &= \beta_0 + \beta_1 X_i + \epsilon_i.
-\end{align*}
+\end{aligned}
 
 There is an **error** term $\epsilon_i$, which can be understood by first assuming that the *expectation value* of the error term given $X_i$ is 0. Mathematically, $\mathbb{E}[\epsilon_i \mid X_i] = 0$. This implies that the expectation value of $Y_i$ given $X_i$ is
 
@@ -28,47 +28,47 @@ $$e_i = Y_i-\hat Y_i=Y_i-\hat\beta_0-\hat\beta_1 X_i.$$
 
 The distinction between the error and the residual is subtle. The model error is unobservable since it is defined with respect to the true population regression parameters. The residual is defined with respect to the fitted sample regression line. They coincide for all observations if and only if $\hat\beta_0=\beta_0$ and $\hat\beta_1=\beta_1$, provided that the predictor values are not all identical. We can minimize functions of the residuals but not the error precisely because we do not have access to the entire population. The minimization process is often defined with respect to the sum of squared residuals.
 
-\begin{align*}
+\begin{aligned}
 \alpha(\hat\beta_0,\hat\beta_1) &= \sum_{i=1}^N(Y_i-\hat\beta_0-\hat\beta_1 X_i)^2.
-\end{align*}
+\end{aligned}
 
 This is one among many metrics that can be used as a basis for minimization. The optimal parameters with respect to the sum of squared residuals constitute the heart of **ordinary least squares (OLS) regression**. Any stationary point of a convex objective function such as ours is a global minimum.
 
-\begin{align*}
+\begin{aligned}
 \frac{\partial\alpha}{\partial\hat\beta_0}
 &= -2\sum_{i=1}^N(Y_i-\hat\beta_0-\hat\beta_1 X_i)=0,\\
 \frac{\partial\alpha}{\partial\hat\beta_1}
 &= -2\sum_{i=1}^N X_i(Y_i-\hat\beta_0-\hat\beta_1 X_i)=0.
-\end{align*}
+\end{aligned}
 
 The above conditions translate to the following equalities:
 
-\begin{align*}
+\begin{aligned}
 \hat\beta_0 N+\hat\beta_1\sum_{i=1}^N X_i&=\sum_{i=1}^N Y_i,\\
 \hat\beta_0\sum_{i=1}^N X_i+\hat\beta_1\sum_{i=1}^N X_i^2&=\sum_{i=1}^N X_iY_i.
-\end{align*}
+\end{aligned}
 
 Before we proceed, we define the dataset mean, variance, and covariance, respectively:
 
-\begin{align*}
+\begin{aligned}
 \bar{X}&=\frac{1}{N}\sum_{i=1}^N X_i,\\
 \bar{Y}&=\frac{1}{N}\sum_{i=1}^N Y_i,\\
 \text{Var}(\mathbf{X})&=\frac{1}{N}\sum_{i=1}^N(X_i-\bar{X})^2,\\
 &=\frac{1}{N}\sum_{i=1}^N X_i^2-\bar{X}^2,\\
 \text{Cov}(\mathbf{X}, \mathbf{Y})&=\frac{1}{N}\sum_{i=1}^N(X_i-\bar{X})(Y_i-\bar{Y}),\\
 &=\frac{1}{N}\sum_{i=1}^N X_iY_i -\bar{X}\bar{Y}
-\end{align*}
+\end{aligned}
 
 This allows us to write the sums of $X_i$ and $Y_i$ in terms of their means, the sums of squares in terms of the variance, and the cross terms in terms of the covariance.
 
-\begin{align*}
+\begin{aligned}
 N\hat\beta_0+N\hat\beta_1\bar{X}&=N\bar{Y},\\
 N\hat\beta_0\bar{X}+N\hat\beta_1(\text{Var}(\mathbf{X})+\bar{X}^2)&=N(\text{Cov}(\mathbf{X}, \mathbf{Y})+\bar{X}\bar{Y}).
-\end{align*}
+\end{aligned}
 
 We can now solve the system of equations using standard matrix methods. We write the equation as follows:
 
-\begin{align*}
+\begin{aligned}
 \begin{bmatrix}
 1 & \bar{X}\\
 \bar{X} & \text{Var}(\mathbf{X})+\bar{X}^2
@@ -82,11 +82,11 @@ We can now solve the system of equations using standard matrix methods. We write
 \bar{Y}\\
 \text{Cov}(\mathbf{X}, \mathbf{Y})+\bar{X}\bar{Y}
 \end{bmatrix}.
-\end{align*}
+\end{aligned}
 
 The matrix is invertible only if $\text{Var}(\mathbf{X})>0$. By definition, the variance cannot be negative. For it to be zero, however, it requires all $X_i=\bar X$. As long as our predictors are not collapsed to a single point, we will have no problem. Keeping this in mind, we can now invert the square matrix:
 
-\begin{align*}
+\begin{aligned}
 \begin{bmatrix}
 \hat\beta_0\\
 \hat\beta_1
@@ -101,18 +101,18 @@ The matrix is invertible only if $\text{Var}(\mathbf{X})>0$. By definition, the 
 \bar{Y}\\
 \text{Cov}(\mathbf{X}, \mathbf{Y})+\bar{X}\bar{Y}
 \end{bmatrix}.
-\end{align*} 
+\end{aligned} 
  
 Finally, we explicitly write the set of parameters that minimizes the sum of squared residuals:
 
-\begin{align*}
+\begin{aligned}
 \hat\beta_0
 &=\frac{\bar{Y}\,\text{Var}(\mathbf{X})-\bar{X}\,\text{Cov}(\mathbf{X}, \mathbf{Y})}
 {\text{Var}(\mathbf{X})},\\
 \hat\beta_1
 &=\frac{\text{Cov}(\mathbf{X}, \mathbf{Y})}
 {\text{Var}(\mathbf{X})}.
-\end{align*}
+\end{aligned}
 
 ### **Application: Synthetic Data**
 
@@ -146,9 +146,9 @@ def slr_fit(x_obs, y_obs):
 
 We generate a synthetic data defined by the relation
 
-\begin{align*}
+\begin{aligned}
 Y_i = \frac{1}{4}X_i + \epsilon_i
-\end{align*}
+\end{aligned}
 
 where $\epsilon$ is a random variable taken from the normal distribution with mean $0$ and standard deviation of $5/2$.
 
@@ -297,41 +297,41 @@ print(f'The p-value is {pval:.4f}')
 
 A cautious student may perform all the calculations above and still be left unconvinced. While it is true that there is a statistically significant trend, and we know the possible wiggle room of the parameters based on the uncertainty inherent in our methods, this is not an assessment of the quality of our regression. Can we trust the regression line based on its ability to explain the variation in the observed data? We will answer this question. Let $\bar Y$ denote the sample mean of $Y$. Suppose we want to describe the variation of the observed data in terms of the variation of the fitted data and the residuals.
 
-\begin{align*}
+\begin{aligned}
 \sum_{i}(Y_i-\bar Y)^2&=\sum_{i}(Y_i-\hat Y_i+\hat Y_i-\bar Y)^2,\\
 &=\sum_{i}(Y_i-\hat Y_i)^2+\sum_{i}(\hat Y_i-\bar Y)^2+2\sum_{i}(Y_i-\hat Y_i)(\hat Y_i-\bar Y)
-\end{align*}
+\end{aligned}
 
 Note that each factor in the cross-product term can be rewritten in the following way:
 
-\begin{align*}
+\begin{aligned}
 Y_i-\hat Y_i&=Y_i-\bar Y +\bar Y-\hat Y_i\\
 &=(Y_i-\bar Y) +\hat\beta_0 + \hat\beta_1 \bar X -\hat\beta_0 - \hat\beta_1 X_i\\
 &=(Y_i-\bar Y) - \hat\beta_1 (X_i - \bar X)\\
 \hat Y_i -\bar Y &= \hat\beta_0 + \hat\beta_1 X_i -\hat\beta_0 -\hat\beta_1 \bar X\\
 &= \hat\beta_1 (X_i - \bar X)
-\end{align*}
+\end{aligned}
 
 Putting them together makes the simplification apparent.
 
-\begin{align*}
+\begin{aligned}
 \sum_{i}(Y_i-\hat Y_i)(\hat Y_i-\bar Y)&=\hat\beta_1\sum_{i} \left[(X_i - \bar X)(Y_i-\bar Y)  - \hat\beta_1 (X_i - \bar X)^2\right],\\
 &=\hat\beta_1\sum_{i} \left[(X_i - \bar X)(Y_i-\bar Y)  - \frac{\sum_j (X_j-\bar X)(Y_j-\bar Y)}{\sum_j (X_j-\bar X)^2} (X_i - \bar X)^2\right]\\
 &=\hat\beta_1\left[\sum_{i} (X_i - \bar X)(Y_i-\bar Y)  - \sum_j(X_j-\bar X)(Y_j-\bar Y)\right]\\
 &=0
-\end{align*}
+\end{aligned}
 
 Therefore, we can decompose the variation of the observed data cleanly:
 
-\begin{align*}
+\begin{aligned}
 \sum_{i}(Y_i-\bar Y)^2&=\sum_{i}(Y_i-\hat Y_i)^2+\sum_{i}(\hat Y_i-\bar Y)^2.
-\end{align*}
+\end{aligned}
 
 This neat decomposition can be unpacked. The left-hand side is the **Total Sum of Squares (TSS)** term, which, as previously mentioned, describes the total variation in the observed data. The first term on the right-hand side should be familiar to us, since it is the **Residual Sum of Squares (RSS)**, which was the basis for the ordinary least squares method we used to obtain the regression parameters. This measures the total amount of variation in the values that the model fails to explain. The last term is the **Explained Sum of Squares (ESS)**, whose name is instructive, as it measures the total amount of variation explained by the model. If the model can fully explain the variation in the data, then $\text{RSS}=0$ and, equivalently, $\text{TSS}=\text{ESS}$. But the absolute magnitudes of these quantities might be difficult to interpret in isolation, since they depend on the scale of the data. It is more informative to look at their ratios. More specifically, we ask: *how much of the variation in the observed data can be explained by the model?* The answer to this question directly addresses the quality of the regression, and it is captured by the $R^2$ value:
 
-\begin{align*}
+\begin{aligned}
 R^2&=\frac{\text{ESS}}{\text{TSS}}=1-\frac{\text{RSS}}{\text{TSS}}
-\end{align*}
+\end{aligned}
 
 By definition, $R^2\in[0,1]$ for an OLS model with an intercept evaluated on the same data used for fitting. A high $R^2$ means that the model explains a large proportion of the variation in the data. Conversely, a low $R^2$ means that the model explains relatively little of the variation.
 
@@ -363,83 +363,83 @@ There $R^2$ score of the data is low. Does it mean that our discussion above is 
 
 Suppose we have $m$ observations with $n$ predictors. We can write the relationship in vectorized form as
 
-\begin{align*}
+\begin{aligned}
 \mathbf{Y}&=\mathbf{X}\bm{\beta}+\bm{\epsilon}.
-\end{align*}
+\end{aligned}
 
 Here $\mathbf{Y}$ and $\bm{\epsilon}$ are vectors with $m$ entries, while $\bm{\beta}$ is a vector with $n+1$ entries, corresponding to the intercept and the $n$ predictors. One might wonder how the intercept term is accounted for. To do this, we construct the **design matrix**, $\mathbf{X}$, such that its first column is a column of ones and its remaining columns represent the separate predictors. Hence, $\mathbf{X}$ is an $m\times(n+1)$ matrix. We want to determine $\bm{\hat\beta}$ such that the sum of squared residuals
 
-\begin{align*}
+\begin{aligned}
 \alpha=(\mathbf{Y}-\mathbf{X}\bm{\hat\beta})^T(\mathbf{Y}-\mathbf{X}\bm{\hat\beta})
-\end{align*}
+\end{aligned}
 
 is minimized. To achieve this, we will use the Einstein summation convention to make the calculations easier. In a nutshell, we express vectors and matrices in terms of their elements, with indices appearing once being free indices, while indices appearing twice are implicitly summed over. We take the derivative with respect to each $\hat\beta_k$:
 
-\begin{align*}
+\begin{aligned}
 \frac{\partial\alpha}{\partial\hat\beta_k}
 &=-2X_{ik}(Y_i-X_{ij}\hat\beta_j)=0.
-\end{align*}
+\end{aligned}
 
 This condition reduces to the **normal equations**:
 
-\begin{align*}
+\begin{aligned}
 X_{ik}Y_i&=X_{ik}X_{ij}\hat\beta_j.
-\end{align*}
+\end{aligned}
 
 Since $k$ is a free index, this gives a system of $n+1$ equations. In vector notation,
 
-\begin{align*}
+\begin{aligned}
 \mathbf{X}^T\mathbf{Y}&=\mathbf{X}^T\mathbf{X}\bm{\hat\beta}.
-\end{align*}
+\end{aligned}
 
 Finally, assuming $\mathbf{X}^T\mathbf{X}$ is invertible,
 
-\begin{align*}
+\begin{aligned}
 \bm{\hat\beta}&=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}.
-\end{align*}
+\end{aligned}
 
 This quantity is called the **least squares estimator**. Before observing the data, it is a random variable because it is a function of the random sample. How sure are we that the least squares estimator is really estimating $\bm\beta$?
 
-\begin{align*}
+\begin{aligned}
 \bm{\hat\beta}
 &=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T(\mathbf X\bm\beta +\bm\epsilon)\\
 &=\bm\beta + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\bm\epsilon.
-\end{align*}
+\end{aligned}
 
 Unlike the estimator, $\bm\beta$ is a fixed parameter. It has a defined value. Under repeated sampling, the realized data, and hence the realized value of $\bm{\hat\beta}$, can differ from sample to sample. If we take the expectation of $\bm{\hat\beta}$ and, just as in the univariate case, assume that $\mathbb{E}[\bm\epsilon\mid\mathbf X]=0$, then
 
-\begin{align*}
+\begin{aligned}
 \mathbb{E}[\bm{\hat\beta}\mid\mathbf X]
 &=\bm\beta.
-\end{align*}
+\end{aligned}
 
 In other words, conditional on $\mathbf X$, the least squares estimator is **unbiased** for $\bm\beta$. If we were to repeatedly sample from the same data-generating process, the average of the resulting estimates would approach the true $\bm\beta$.
 
 Using the expression for $\bm{\hat\beta}$, we can write the vector of residuals as
 
-\begin{align*}
+\begin{aligned}
 \mathbf e
 &=[\mathbf I-\mathbf X(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T]\mathbf{Y}.
-\end{align*}
+\end{aligned}
 
 Defining $\mathbf P \equiv \mathbf X(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T$ and $\mathbf M\equiv \mathbf I-\mathbf P$, we can rewrite the residuals as $\mathbf e=\mathbf{M}\mathbf{Y}$. We can interpret $\mathbf M$ as a matrix that *residualizes* $\mathbf Y$; it removes from $\mathbf{Y}$ the components explained by $\mathbf{X}$. As an exercise, you can verify that $\mathbf P$ is symmetric $(\mathbf P^T=\mathbf P)$ and idempotent $(\mathbf P^2=\mathbf P)$, and by extension, $\mathbf M$ inherits the same properties.
 
 The matrix $\mathbf P$ is called the **projection matrix** since it *projects* the observed response vector $\mathbf{Y}$ onto the subspace determined by the columns of the design matrix. In general, $\mathbf P$ is **not invertible**, as we will now demonstrate. Assume that $\mathbf P$ is non-singular.
 
-\begin{align*}
+\begin{aligned}
 \mathbf P^2 &= \mathbf P,\\
 \mathbf P^{-1}\mathbf P^2 &= \mathbf P^{-1}\mathbf P,\\
 \mathbf P &= \mathbf I.
-\end{align*}
+\end{aligned}
 
 Therefore, the projection matrix is invertible, i.e., $\mathbf P^{-1}$ exists, if and only if $\mathbf P=\mathbf I$. As a final note for this section, we will establish this geometric fact: **the residual is orthogonal to every column of the design matrix**. Observe that
 
-\begin{align*}
+\begin{aligned}
 \mathbf X^T \mathbf e
 &=[\mathbf X^T-\mathbf X^T\mathbf X(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T]\mathbf{Y},\\
 &=[\mathbf X^T-\mathbf X^T]\mathbf{Y},\\
 &=0.
-\end{align*}
+\end{aligned}
 
 ### **Application: Advertising Data**
 
@@ -623,102 +623,102 @@ The results for the newspaper advertising is interesting for two reasons: its re
 
 Let us split the predictor matrix by isolating the predictor of interest as a vector:
 
-\begin{align*}
+\begin{aligned}
 \mathbf{Y} &= \mathbf{u}\beta_1+\mathbf{X}\bm{\beta}_2+\bm{\epsilon}.
-\end{align*}
+\end{aligned}
 
 Here, $\mathbf{u}$ contains the predictor whose coefficient we are interested in, while $\mathbf{X}$ contains all the other *nuisance* predictors, including the intercept. The normal equations from multivariate linear regression are
 
-\begin{align*}
+\begin{aligned}
 \mathbf{X}^T\mathbf{Y}&=\mathbf{X}^T\mathbf{X}\bm{\hat\beta}.
-\end{align*}
+\end{aligned}
 
 Writing this in terms of $\mathbf{u}$ and $\mathbf{X}$ gives
 
-\begin{align*}
+\begin{aligned}
 \mathbf{u}^T\mathbf{Y}
 &=\mathbf{u}^T\mathbf{u}\hat\beta_1+\mathbf{u}^T\mathbf{X}\bm{\hat\beta}_2,\\
 \mathbf{X}^T\mathbf{Y}
 &=\mathbf{X}^T\mathbf{u}\hat\beta_1+\mathbf{X}^T\mathbf{X}\bm{\hat\beta}_2.
-\end{align*}
+\end{aligned}
 
 We can solve the second equation for $\bm{\hat\beta}_2$:
 
-\begin{align*}
+\begin{aligned}
 \bm{\hat\beta}_2
 &=(\mathbf{X}^T\mathbf{X})^{-1}
 \mathbf{X}^T(\mathbf{Y}-\mathbf{u}\hat\beta_1).
-\end{align*}
+\end{aligned}
 
 Substituting this into the first equation gives
 
-\begin{align*}
+\begin{aligned}
 \mathbf{u}^T\mathbf{Y}
 &=\mathbf{u}^T\mathbf{u}\hat\beta_1
 +\mathbf{u}^T\mathbf{X}
 (\mathbf{X}^T\mathbf{X})^{-1}
 \mathbf{X}^T(\mathbf{Y}-\mathbf{u}\hat\beta_1).
-\end{align*}
+\end{aligned}
 
 Using the *annihilator* $\mathbf{M}$, we can write this equation as
 
-\begin{align*}
+\begin{aligned}
 \mathbf{u}^T\mathbf{M}\mathbf{Y}
 &=\mathbf{u}^T\mathbf{M}\mathbf{u}\hat\beta_1.
-\end{align*}
+\end{aligned}
 
 Therefore,
 
-\begin{align*}
+\begin{aligned}
 \hat\beta_1
 &=(\mathbf{u}^T\mathbf{M}\mathbf{u})^{-1}
 \mathbf{u}^T\mathbf{M}\mathbf{Y}.
-\end{align*}
+\end{aligned}
 
 Since $\mathbf{M}$ is symmetric and idempotent, we have
 
-\begin{align*}
+\begin{aligned}
 \mathbf{u}^T\mathbf{M}\mathbf{u}
 &=(\mathbf{M}\mathbf{u})^T(\mathbf{M}\mathbf{u}),\\
 \mathbf{u}^T\mathbf{M}\mathbf{Y}
 &=(\mathbf{M}\mathbf{u})^T(\mathbf{M}\mathbf{Y}).
-\end{align*}
+\end{aligned}
 
 Thus,
 
-\begin{align*}
+\begin{aligned}
 \hat\beta_1
 &=
 \frac{(\mathbf{M}\mathbf{u})^T(\mathbf{M}\mathbf{Y})}
 {(\mathbf{M}\mathbf{u})^T(\mathbf{M}\mathbf{u})}
-\end{align*}
+\end{aligned}
 
 when $\mathbf{u}$ is a single predictor. If we denote the quantities residualized by $\mathbf{M}$ with a tilde, we can compactly write this as
 
-\begin{align*}
+\begin{aligned}
 \hat\beta_1
 &=
 \frac{\tilde{\mathbf{u}}^T\tilde{\mathbf{Y}}}
 {\tilde{\mathbf{u}}^T\tilde{\mathbf{u}}}.
-\end{align*}
+\end{aligned}
 
 We can push this further by recognizing that we can do this for each predictor:
 
-\begin{align*}
+\begin{aligned}
 \hat\beta_i
 &=
 \frac{\tilde{\mathbf{u}}_i^T\tilde{\mathbf{Y}}}
 {\tilde{\mathbf{u}}_i^T\tilde{\mathbf{u}}_i}
-\end{align*}
+\end{aligned}
 
 where the residualization is performed with respect to the associated nuisance features. For non-intercept coefficients, we can rewrite this as
 
-\begin{align*}
+\begin{aligned}
 \hat\beta_i
 &=
 \frac{\text{Cov}(\tilde{\mathbf{u}}_i,\tilde{\mathbf{Y}})}
 {\text{Var}(\tilde{\mathbf{u}}_i)}
-\end{align*}
+\end{aligned}
 
 which we can recognize from the simple linear regression earlier. This is the Frisch-Waugh-Lovell result: the coefficient of $\mathbf{u}$ from the full multivariate regression is exactly the same as the coefficient obtained by first removing the effects of $\mathbf{X}$ from both $\mathbf{Y}$ and $\mathbf{u}$, and then regressing the residualized $\mathbf{Y}$ on the residualized $\mathbf{u}$. The coefficient $\hat\beta_i$ obtained from this final regression is exactly the same as the coefficient obtained from the original multivariate regression. In other words, $\hat\beta_i$ describes the estimated change in the conditional mean of $\mathbf{Y}$ associated with a unit increase in $\mathbf{u}$, holding all the other predictors *fixed*. To demonstrate, we return to our `advertising` dataset.
 
@@ -769,26 +769,26 @@ The method is as follows:
 1. Fit the full model using the FWL procedure and record the observed coefficient $\hat\beta_i$ for the predictor we want to test.
 2. Fit a reduced model containing all nuisance predictors while excluding the predictor whose coefficient $\hat\beta_i$ is being tested. Obtain the fitted values and residuals from this reduced model.
 3. Randomly permute the residuals from the reduced model and add them back to the fitted values to construct a **permuted response** $\mathbf{Y}^*$:
-   \begin{align*}
+   \begin{aligned}
    \mathbf{Y}^*
    &=
    \widehat{\mathbf{Y}}_{\text{red}}
    +
    \mathbf{e}_{\text{red}}^*.
-   \end{align*}
+   \end{aligned}
    Because the fitted values remain unchanged, the relationships between $Y$ and the nuisance predictors are preserved. Only the unexplained part of the response is rearranged.
 4. Fit the full model to the permuted response $\mathbf{Y}^*$ and record the corresponding estimated coefficient $\hat\beta_i^*$ for the predictor being tested.
 5. Repeat steps 3-4 $r$ times, obtaining
-   \begin{align*}
+   \begin{aligned}
    \{\hat\beta_i^*\}_{r=1}^R.
-   \end{align*}
+   \end{aligned}
    This collection forms a reference distribution for $\hat\beta_i$ under the null hypothesis that the predictor being tested contributes no additional effect after accounting for the nuisance predictors.
 6. Calculate the proportion of $\hat\beta_i^*$ values that are at least as extreme as the observed $\hat\beta_i$, i.e., satisfying
-   \begin{align*}
+   \begin{aligned}
    |\hat\beta_i^*|
    \geq
    |\hat\beta_i|.
-   \end{align*}
+   \end{aligned}
 
 We again report the Monte Carlo $p$-value.
 
@@ -847,54 +847,54 @@ The first coefficient, the intercept, is statistically significant. If we strip 
 
 We can also assess the quality of our model through the sum-of-squares decomposition, but now in vector form. Let $\mathbf{\bar Y}$ denote a vector whose components are all equal to the mean value of $\mathbf Y$. We decompose the TSS as follows:
 
-\begin{align*}
+\begin{aligned}
 (\mathbf{Y}-\mathbf{\bar Y})^T(\mathbf{Y}-\mathbf{\bar Y})
 &=(\mathbf{Y}-\mathbf{\hat Y}+\mathbf{\hat Y}-\mathbf{\bar Y})^T(\mathbf{Y}-\mathbf{\hat Y}+\mathbf{\hat Y}-\mathbf{\bar Y})\\
 &=(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{Y}-\mathbf{\hat Y})
 +(\mathbf{\hat Y}-\mathbf{\bar Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y})
 +2(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y}).
-\end{align*}
+\end{aligned}
 
 We see that this should be the usual decomposition $\text{TSS}=\text{RSS}+\text{ESS}$ except for the final cross term. Our intuition tells us that this should somehow reduce to zero. Decomposing this term further:
 
-\begin{align*}
+\begin{aligned}
 (\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y})
 &=(\mathbf{Y}^T\mathbf{\hat Y}-\mathbf{\hat Y}^T\mathbf{\hat Y})
 +(\mathbf{\hat Y}^T\mathbf{\bar Y}-\mathbf{Y}^T\mathbf{\bar Y}).
-\end{align*}
+\end{aligned}
 
 The first term is zero, and we can see this by rewriting $\mathbf{\hat Y}$ in terms of the projection matrix, $\mathbf P$, which is symmetric and idempotent:
 
-\begin{align*}
+\begin{aligned}
 \mathbf{\hat Y}^T\mathbf{\hat Y}
 &=(\mathbf{P}\mathbf{Y})^T(\mathbf{P}\mathbf{Y})\\
 &=\mathbf{Y}^T\mathbf{P}^T\mathbf{P}\mathbf{Y}\\
 &=\mathbf{Y}^T\mathbf{P}^2\mathbf{Y}\\
 &=\mathbf{Y}^T\mathbf{P}\mathbf{Y}\\
 &=\mathbf{Y}^T\mathbf{\hat Y}.
-\end{align*}
+\end{aligned}
 
 The second term is zero since it reduces to the sum of the residuals. Observe that
 
-\begin{align*}
+\begin{aligned}
 \mathbf{\hat Y}^T\mathbf{\bar Y}-\mathbf{Y}^T\mathbf{\bar Y}
 &=-(\mathbf{Y}-\mathbf{\hat Y})^T\mathbf{\bar Y}\\
 &=-\mathbf{e}^T\mathbf{\bar Y}.
-\end{align*}
+\end{aligned}
 
 The point where it reduces to zero becomes apparent if we write this as an explicit summation:
 
-\begin{align*}
+\begin{aligned}
 \mathbf{e}^T\mathbf{\bar Y}&=\bar Y\sum_i e_i.
-\end{align*}
+\end{aligned}
 
 Recall that $\mathbf X^T \mathbf e=0$. The first column of $\mathbf X$ is a column of ones, so the first element of $\mathbf X^T \mathbf e$ is necessarily the sum of the residuals, which is zero. Our intuition is therefore correct, leading us to the usual decomposition:
 
-\begin{align*}
+\begin{aligned}
 (\mathbf{Y}-\mathbf{\bar Y})^T(\mathbf{Y}-\mathbf{\bar Y})
 &=(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{Y}-\mathbf{\hat Y})
 +(\mathbf{\hat Y}-\mathbf{\bar Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y}).
-\end{align*}
+\end{aligned}
 
 
 ```python

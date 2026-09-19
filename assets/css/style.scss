@@ -71,6 +71,10 @@ body {
   color: #ffffff;
 }
 
+/* =========================
+   Default site layout
+   ========================= */
+
 .wrapper {
   width: 1100px;
   max-width: calc(100% - 80px);
@@ -171,9 +175,67 @@ section table {
   overflow-x: auto;
 }
 
-.MathJax {
+/* =========================
+   Lecture / note pages
+   ========================= */
+
+.note-wrapper {
+  width: 900px;
+  max-width: calc(100% - 80px);
+  margin: 0 auto;
+}
+
+.note-content {
+  width: 100%;
+  min-width: 0;
+}
+
+.note-content h1 {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.note-content h2 {
+  margin-top: 1.8em;
+}
+
+.note-content h3 {
+  margin-top: 1.5em;
+}
+
+.note-content p {
+  line-height: 1.65;
+}
+
+.note-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+}
+
+.note-content pre {
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
-  overflow-y: hidden;
+  white-space: pre;
+  padding: 1em;
+  margin: 1.5em 0;
+}
+
+.note-content code {
+  overflow-wrap: normal;
+}
+
+.note-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.note-content ul,
+.note-content ol {
+  line-height: 1.65;
 }
 
 mjx-container[display="true"] {
@@ -186,6 +248,10 @@ mjx-container[display="true"] {
 footer {
   display: none;
 }
+
+/* =========================
+   Tablet / mobile
+   ========================= */
 
 @media screen and (max-width: 960px) {
   :root {
@@ -269,6 +335,17 @@ footer {
     float: none;
     margin-top: 45px;
   }
+
+  .note-wrapper {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 25px;
+  }
+
+  .note-content {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -324,5 +401,15 @@ footer {
 
   section {
     margin-top: 40px;
+  }
+
+  .note-wrapper {
+    padding: 0 20px;
+  }
+
+  .note-content p,
+  .note-content ul,
+  .note-content ol {
+    line-height: 1.55;
   }
 }

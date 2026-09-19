@@ -65,6 +65,7 @@ html {
 
 .nav-name:hover {
   color: #ffffff !important;
+  font-weight: 500 !important;
 }
 
 .nav-links {
@@ -86,6 +87,7 @@ html {
 
 .nav-links a:hover {
   color: #ffffff !important;
+  font-weight: 600 !important;
 }
 
 body.jp-Notebook {

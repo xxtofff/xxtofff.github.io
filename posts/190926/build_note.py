@@ -80,7 +80,7 @@ body.jp-Notebook {
 }
 
 body.jp-Notebook > main {
-  width: 1100px !important;
+  width: 1250px !important;
   max-width: calc(100% - 80px) !important;
   margin: 0 auto !important;
   padding-top: 35px !important;

@@ -39,6 +39,7 @@ html {
   top: 0;
   left: 0;
   z-index: 1000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
 }
 
 .nav-inner {
@@ -49,12 +50,15 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
 }
 
 .nav-name {
   color: #ffffff !important;
-  font-size: 24px;
-  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  line-height: normal !important;
   text-decoration: none !important;
   white-space: nowrap;
 }
@@ -67,12 +71,15 @@ html {
   display: flex;
   align-items: center;
   gap: 42px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
 }
 
 .nav-links a {
   color: #d0d0d0 !important;
-  font-size: 18px;
-  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
   text-decoration: none !important;
   white-space: nowrap;
 }
@@ -144,14 +151,6 @@ body.jp-Notebook > main {
 }
 
 @media screen and (max-width: 960px) {
-  :root {
-    --nav-height: 125px;
-  }
-
-  .site-nav {
-    height: var(--nav-height);
-  }
-
   .nav-inner {
     width: 100%;
     max-width: none;
@@ -163,7 +162,7 @@ body.jp-Notebook > main {
   }
 
   .nav-name {
-    font-size: 22px;
+    font-size: 22px !important;
   }
 
   .nav-links {
@@ -171,7 +170,7 @@ body.jp-Notebook > main {
   }
 
   .nav-links a {
-    font-size: 17px;
+    font-size: 17px !important;
   }
 
   body.jp-Notebook > main {
@@ -182,12 +181,8 @@ body.jp-Notebook > main {
 }
 
 @media screen and (max-width: 500px) {
-  :root {
-    --nav-height: 120px;
-  }
-
   .site-nav {
-    height: var(--nav-height);
+    height: 120px;
   }
 
   .nav-inner {
@@ -196,7 +191,7 @@ body.jp-Notebook > main {
   }
 
   .nav-name {
-    font-size: 21px;
+    font-size: 21px !important;
   }
 
   .nav-links {
@@ -206,7 +201,7 @@ body.jp-Notebook > main {
   }
 
   .nav-links a {
-    font-size: 16px;
+    font-size: 16px !important;
   }
 
   body.jp-Notebook {

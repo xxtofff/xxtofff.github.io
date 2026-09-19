@@ -32,7 +32,6 @@ header_css = """
   left: 0;
   z-index: 9999;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .nav-inner {
@@ -55,6 +54,7 @@ header_css = """
 
 .nav-name:hover {
   color: #ffffff !important;
+  font-weight: 500;
 }
 
 .nav-links {
@@ -66,12 +66,14 @@ header_css = """
 .nav-links a {
   color: #d0d0d0 !important;
   font-size: 18px;
+  font-weight: 400;
   text-decoration: none !important;
   white-space: nowrap;
 }
 
 .nav-links a:hover {
   color: #ffffff !important;
+  font-weight: 600;
 }
 
 body.jp-Notebook {
@@ -212,8 +214,17 @@ header_html = """
 </nav>
 """
 
+theme_script = """
+<script>
+const savedTheme = localStorage.getItem("theme");
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+if (savedTheme === "dark" || (!savedTheme && prefersDark)) document.body.classList.add("dark-mode");
+</script>
+"""
+
 html = html.replace("</head>", header_css + "</head>", 1)
 html = html.replace('<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">', '<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">' + header_html, 1)
+html = html.replace("</body>", theme_script + "</body>", 1)
 
 html_file.write_text(html, encoding="utf-8")
 generated_file.unlink()

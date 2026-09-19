@@ -79,6 +79,7 @@ body {
 
 header {
   width: 300px;
+  float: left;
 }
 
 .sidebar-profile {
@@ -127,7 +128,59 @@ header {
 }
 
 section {
-  width: 650px;
+  width: 700px;
+  float: right;
+  min-width: 0;
+}
+
+section h1 {
+  margin-top: 0;
+}
+
+section h2 {
+  margin-top: 1.8em;
+}
+
+section h3 {
+  margin-top: 1.5em;
+}
+
+section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+}
+
+section pre {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+  padding: 1em;
+  margin: 1.5em 0;
+}
+
+section code {
+  overflow-wrap: normal;
+}
+
+section table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.MathJax {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 1.25em 0 !important;
 }
 
 footer {

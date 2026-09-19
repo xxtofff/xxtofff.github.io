@@ -9,7 +9,9 @@
   <script>
   MathJax = {
     tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']]
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEnvironments: true
     }
   };
   </script>
@@ -41,16 +43,22 @@
         <a href="{{ "/" | absolute_url }}">
           <img src="{{ "/assets/images/profile.jpg" | relative_url }}" alt="Adam Mendoza" class="profile-photo">
         </a>
+
         <h1><a href="{{ "/" | absolute_url }}">Adam Mendoza</a></h1>
-        {% if site.description %}<p>{{ site.description }}</p>{% endif %}
+
+        {% if site.description %}
+        <p>{{ site.description }}</p>
+        {% endif %}
 
         <div class="social-links">
           <a href="https://github.com/xxtofff" aria-label="GitHub">
             <img src="{{ "/assets/images/github.svg" | relative_url }}" alt="GitHub">
           </a>
+
           <a href="https://www.linkedin.com/in/gadmendoza/" aria-label="LinkedIn">
             <img src="{{ "/assets/images/linkedin.svg" | relative_url }}" alt="LinkedIn">
           </a>
+
           <a href="mailto:work.admmndz@gmail.com" aria-label="Email">
             <img src="{{ "/assets/images/gmail.svg" | relative_url }}" alt="Email">
           </a>

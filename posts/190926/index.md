@@ -4,8 +4,6 @@ title: "Linear Regression from Scratch"
 permalink: /notes/linear-regression-from-scratch/
 ---
 
-# **Linear Regression from Scratch**
-
 Students often encounter linear regression for the first time when they are asked to find the line that *fits* a given set of data points well. The intercept and slope are calculated, and, depending on the objective, the result of the regression is evaluated using some measure of deviation. This deviation is then reported, and from there, the question of whether the regression served its purpose is assessed. The lesson often stops there. For some people, this is sufficient.
 
 However, this mathematical tool offers much more than that. As a student of forecasting and causal inference, I was made painfully aware of the "unreasonable effectiveness of linear regression," as Matheus Facure put it. It is difficult to overlook.
@@ -20,11 +18,11 @@ Assume that a collection of measurements $\{(X_i,Y_i)\}_{i=1}^N$ is linearly rel
 Y_i &= \beta_0 + \beta_1 X_i + \epsilon_i.
 \end{align*}
 
-There is an **error** term $\epsilon_i$, which can be understood by first assuming that the *expectation value* of the error term given $X_i$ is 0. Mathematically, $\mathbb{E}[\epsilon_i | X_i] = 0$. This implies that the expectation value of $Y_i$ given $X_i$ is
+There is an **error** term $\epsilon_i$, which can be understood by first assuming that the *expectation value* of the error term given $X_i$ is 0. Mathematically, $\mathbb{E}[\epsilon_i \mid X_i] = 0$. This implies that the expectation value of $Y_i$ given $X_i$ is
 
-$$\mathbb{E}[Y_i|X_i] = \beta_0 + \beta_1 X_i.$$
+$$\mathbb{E}[Y_i\mid X_i] = \beta_0 + \beta_1 X_i.$$
 
-We can therefore interpret the error as the deviation of the population $Y_i$ from its expected value given $X_i$, or $\epsilon_i=Y_i-\mathbb{E}[Y_i|X_i]$. Here, $\beta_0$ and $\beta_1$ are the *true* parameters. They specify the linear relationship between $X$ and the conditional mean of $Y$. It is important to understand early on that we cannot fully know what these parameters actually are, unless we have access to the full **population**, which in principle, we have not. Our pursuit is to find the best *estimates* of these parameters, $\{\hat\beta_0, \hat\beta_1\}$, which we can calculate from the **samples** of the population. Readers familiar with the works of Plato might want to think about the true parameters as Platonic ideals, existing in a realm beyond our conception, and our estimates as mere approximations of these perfect objects. To characterize how the observed data deviates from our fitted line, we define the **residuals** as
+We can therefore interpret the error as the deviation of the population $Y_i$ from its expected value given $X_i$, or $\epsilon_i=Y_i-\mathbb{E}[Y_i\mid X_i]$. Here, $\beta_0$ and $\beta_1$ are the *true* parameters. They specify the linear relationship between $X$ and the conditional mean of $Y$. It is important to understand early on that we cannot fully know what these parameters actually are, unless we have access to the full **population**, which in principle, we have not. Our pursuit is to find the best *estimates* of these parameters, $\{\hat\beta_0, \hat\beta_1\}$, which we can calculate from the **samples** of the population. Readers familiar with the works of Plato might want to think about the true parameters as Platonic ideals, existing in a realm beyond our conception, and our estimates as mere approximations of these perfect objects. To characterize how the observed data deviates from our fitted line, we define the **residuals** as
 
 $$e_i = Y_i-\hat Y_i=Y_i-\hat\beta_0-\hat\beta_1 X_i.$$
 
@@ -408,10 +406,10 @@ This quantity is called the **least squares estimator**. Before observing the da
 &=\bm\beta + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\bm\epsilon.
 \end{align*}
 
-Unlike the estimator, $\bm\beta$ is a fixed parameter. It has a defined value. Under repeated sampling, the realized data, and hence the realized value of $\bm{\hat\beta}$, can differ from sample to sample. If we take the expectation of $\bm{\hat\beta}$ and, just as in the univariate case, assume that $\mathbb{E}[\bm\epsilon|\mathbf X]=0$, then
+Unlike the estimator, $\bm\beta$ is a fixed parameter. It has a defined value. Under repeated sampling, the realized data, and hence the realized value of $\bm{\hat\beta}$, can differ from sample to sample. If we take the expectation of $\bm{\hat\beta}$ and, just as in the univariate case, assume that $\mathbb{E}[\bm\epsilon\mid\mathbf X]=0$, then
 
 \begin{align*}
-\mathbb{E}[\bm{\hat\beta}|\mathbf X]
+\mathbb{E}[\bm{\hat\beta}\mid\mathbf X]
 &=\bm\beta.
 \end{align*}
 

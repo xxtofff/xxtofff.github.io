@@ -5,11 +5,21 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
   <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '{{ site.google_analytics }}');</script>
   {% endif %}
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
   <meta charset="utf-8">
   {% if site.description %}<meta name="description" content="{{ site.description }}">{% endif %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <title>{{ site.title }}</title>
+  <title>{{ page.title | default: site.title }}</title>
   <link rel="icon" type="image/png" href="{{ "/assets/images/favicon.png" | relative_url }}">
   <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
 </head>
@@ -24,6 +34,7 @@
       </div>
     </div>
   </nav>
+
   <div class="wrapper">
     <header>
       <div class="sidebar-profile">
@@ -32,6 +43,7 @@
         </a>
         <h1><a href="{{ "/" | absolute_url }}">Adam Mendoza</a></h1>
         {% if site.description %}<p>{{ site.description }}</p>{% endif %}
+
         <div class="social-links">
           <a href="https://github.com/xxtofff" aria-label="GitHub">
             <img src="{{ "/assets/images/github.svg" | relative_url }}" alt="GitHub">
@@ -45,6 +57,7 @@
         </div>
       </div>
     </header>
+
     <section>
       {{ content }}
     </section>

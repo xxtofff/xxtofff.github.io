@@ -23,6 +23,8 @@ html = html.replace("""MathJax.Hub.Config({
 
 header_css = """
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap');
+
 html {
   box-sizing: border-box;
 }
@@ -39,7 +41,8 @@ html {
   top: 0;
   left: 0;
   z-index: 1000;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .nav-inner {
@@ -50,44 +53,44 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 .nav-name {
   color: #ffffff !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-size: 24px !important;
   font-weight: 500 !important;
-  line-height: normal !important;
+  line-height: 1.5 !important;
   text-decoration: none !important;
   white-space: nowrap;
 }
 
 .nav-name:hover {
   color: #ffffff !important;
-  font-weight: 500 !important;
+  font-weight: 700 !important;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 42px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 .nav-links a {
   color: #d0d0d0 !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-size: 18px !important;
   font-weight: 400 !important;
-  line-height: normal !important;
+  line-height: 1.5 !important;
   text-decoration: none !important;
   white-space: nowrap;
 }
 
 .nav-links a:hover {
   color: #ffffff !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
 }
 
 body.jp-Notebook {
@@ -189,7 +192,7 @@ body.jp-Notebook > main {
 
   .nav-inner {
     padding: 16px 15px;
-    gap: 12px;
+    gap: 24px;
   }
 
   .nav-name {

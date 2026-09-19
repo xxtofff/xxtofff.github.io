@@ -7802,14 +7802,11 @@ a.anchor-link {
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body.jp-Notebook {
@@ -7877,6 +7874,51 @@ body.jp-Notebook {
 }
 
 /* =========================
+   Hamburger menu
+   ========================= */
+
+.toc-toggle {
+  position: fixed;
+  top: 14px;
+  left: 24px;
+  width: 36px;
+  height: 36px;
+  padding: 7px 5px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.toc-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #d0d0d0;
+  border-radius: 2px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.toc-toggle:hover span {
+  background: #ffffff;
+}
+
+.toc-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.toc-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.toc-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* =========================
    Notebook layout
    ========================= */
 
@@ -7890,6 +7932,7 @@ body.jp-Notebook {
   grid-template-columns: 230px minmax(0, 1250px);
   column-gap: 30px;
   align-items: start;
+  transition: width 0.25s ease, grid-template-columns 0.25s ease, column-gap 0.25s ease;
 }
 
 body.jp-Notebook > .note-layout > main {
@@ -7959,44 +8002,20 @@ body.jp-Notebook > .note-layout > main {
 
 .note-toc {
   position: sticky;
-  top: 90px;
+  top: 89px;
   width: 230px;
   max-height: calc(100vh - 115px);
   overflow-y: auto;
   align-self: start;
   font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.note-toc-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
 }
 
 .note-toc-title {
-  margin: 0;
+  margin: 0 0 14px 0;
   color: #242424;
   font-size: 17px !important;
   font-weight: 700 !important;
   line-height: 1.4;
-}
-
-.note-toc-hide {
-  border: none;
-  padding: 0;
-  background: transparent;
-  color: #777777;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  cursor: pointer;
-}
-
-.note-toc-hide:hover {
-  color: #242424;
-  font-weight: 700;
 }
 
 .note-toc ul {
@@ -8035,55 +8054,30 @@ body.jp-Notebook > .note-layout > main {
   font-weight: 700 !important;
 }
 
-.toc-reopen {
-  display: none;
-  position: fixed;
-  top: 82px;
-  left: 20px;
-  z-index: 950;
-  border: none;
-  padding: 8px 12px;
-  background: #242424;
-  color: #ffffff;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.toc-reopen:hover {
-  font-weight: 700;
-}
-
 /* =========================
-   Collapsed TOC
+   Hidden TOC
    ========================= */
 
 body.toc-hidden .note-layout {
   width: 1250px;
   max-width: calc(100% - 40px);
-  grid-template-columns: 0 minmax(0, 1250px);
+  grid-template-columns: minmax(0, 1250px);
   column-gap: 0;
 }
 
 body.toc-hidden .note-toc {
   width: 0;
+  max-height: 0;
   opacity: 0;
   overflow: hidden;
   pointer-events: none;
-  transform: translateX(-20px);
-}
-
-body.toc-hidden .toc-reopen {
-  display: block;
 }
 
 /* =========================
    Responsive
    ========================= */
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1550px) {
   .note-layout {
     width: calc(100% - 40px);
     grid-template-columns: 210px minmax(0, 1fr);
@@ -8096,7 +8090,7 @@ body.toc-hidden .toc-reopen {
 
   body.toc-hidden .note-layout {
     width: calc(100% - 40px);
-    grid-template-columns: 0 minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -8105,7 +8099,7 @@ body.toc-hidden .toc-reopen {
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 18px 20px;
+    padding: 18px 20px 18px 65px;
     flex-direction: column;
     justify-content: center;
     gap: 14px;
@@ -8134,11 +8128,23 @@ body.toc-hidden .toc-reopen {
   .note-toc {
     width: 210px;
   }
+
+  body.toc-hidden .note-layout {
+    width: 100%;
+    max-width: none;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .toc-toggle {
+    left: 20px;
+  }
 }
 
 @media screen and (max-width: 760px) {
   .note-layout {
     display: block;
+    width: 100%;
+    max-width: none;
     padding: 25px 20px 45px 20px;
   }
 
@@ -8156,11 +8162,6 @@ body.toc-hidden .toc-reopen {
     z-index: 900;
   }
 
-  .toc-reopen {
-    display: block;
-    top: 130px;
-  }
-
   body.toc-hidden .note-layout {
     width: 100%;
     max-width: none;
@@ -8169,6 +8170,7 @@ body.toc-hidden .toc-reopen {
 
   body.toc-hidden .note-toc {
     width: 0;
+    max-height: 0;
     padding: 0;
     border: none;
     box-shadow: none;
@@ -8176,6 +8178,48 @@ body.toc-hidden .toc-reopen {
 
   .jp-RenderedHTMLCommon {
     font-size: 17px !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .site-nav {
+    height: 120px;
+  }
+
+  .nav-inner {
+    padding: 16px 15px 16px 60px;
+    gap: 24px;
+  }
+
+  .nav-name {
+    font-size: 21px !important;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .nav-links a {
+    font-size: 16px !important;
+  }
+
+  body.jp-Notebook {
+    padding-top: 120px !important;
+  }
+
+  .toc-toggle {
+    top: 42px;
+    left: 20px;
+  }
+
+  .note-toc {
+    top: 140px;
+  }
+
+  body.jp-Notebook > .note-layout {
+    padding-top: 25px;
   }
 }
 </style>
@@ -8192,14 +8236,15 @@ body.toc-hidden .toc-reopen {
   </div>
 </nav>
 
-<button class="toc-reopen" id="toc-reopen" type="button">Contents</button>
+<button class="toc-toggle active" id="toc-toggle" type="button" aria-label="Hide table of contents" aria-expanded="true">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 
 <div class="note-layout">
 <aside class="note-toc" id="note-toc">
-  <div class="note-toc-header">
-    <div class="note-toc-title">Contents</div>
-    <button class="note-toc-hide" id="toc-hide" type="button">Hide</button>
-  </div>
+  <div class="note-toc-title">Contents</div>
   <ul id="toc-list"></ul>
 </aside>
 <main>
@@ -9506,5 +9551,53 @@ This collection forms a reference distribution for $\hat\beta_i$ under the null 
 </div>
 </div>
 </main></div>
-<script>document.addEventListener("DOMContentLoaded",()=>{const tocList=document.getElementById("toc-list"),hideButton=document.getElementById("toc-hide"),reopenButton=document.getElementById("toc-reopen"),headings=document.querySelectorAll("main h2, main h3");headings.forEach((heading,index)=>{if(!heading.id)heading.id="section-"+index;const li=document.createElement("li");li.className=heading.tagName.toLowerCase()==="h3"?"toc-h3":"toc-h2";const link=document.createElement("a");link.href="#"+heading.id;link.textContent=heading.textContent.replace("¶","").trim();link.addEventListener("click",()=>{heading.scrollIntoView({behavior:"smooth",block:"start"});});li.appendChild(link);tocList.appendChild(li);});hideButton.addEventListener("click",()=>{document.body.classList.add("toc-hidden");});reopenButton.addEventListener("click",()=>{document.body.classList.remove("toc-hidden");});const links=Array.from(tocList.querySelectorAll("a"));const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.remove("active"));const activeLink=tocList.querySelector('a[href="#'+entry.target.id+'"]');if(activeLink)activeLink.classList.add("active");}});},{rootMargin:"-90px 0px -70% 0px",threshold:0});headings.forEach(heading=>observer.observe(heading));});</script></body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tocList = document.getElementById("toc-list");
+  const toggle = document.getElementById("toc-toggle");
+  const headings = document.querySelectorAll("main h2, main h3");
+
+  headings.forEach((heading, index) => {
+    if (!heading.id) heading.id = "section-" + index;
+
+    const li = document.createElement("li");
+    li.className = heading.tagName.toLowerCase() === "h3" ? "toc-h3" : "toc-h2";
+
+    const link = document.createElement("a");
+    link.href = "#" + heading.id;
+    link.textContent = heading.textContent.replace("¶", "").trim();
+
+    link.addEventListener("click", () => {
+      heading.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    li.appendChild(link);
+    tocList.appendChild(li);
+  });
+
+  toggle.addEventListener("click", () => {
+    const hidden = document.body.classList.toggle("toc-hidden");
+    toggle.classList.toggle("active", !hidden);
+    toggle.setAttribute("aria-expanded", String(!hidden));
+    toggle.setAttribute("aria-label", hidden ? "Show table of contents" : "Hide table of contents");
+  });
+
+  const links = Array.from(tocList.querySelectorAll("a"));
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(link => link.classList.remove("active"));
+        const activeLink = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (activeLink) activeLink.classList.add("active");
+      }
+    });
+  }, {
+    rootMargin: "-90px 0px -70% 0px",
+    threshold: 0
+  });
+
+  headings.forEach(heading => observer.observe(heading));
+});
+</script></body>
 </html>

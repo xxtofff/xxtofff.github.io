@@ -108,23 +108,37 @@ body.jp-Notebook {
   left: 24px;
   width: 36px;
   height: 36px;
-  padding: 7px 5px;
+  padding: 0;
   border: none;
   background: transparent;
   cursor: pointer;
   z-index: 1100;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .toc-toggle span {
-  display: block;
+  position: absolute;
+  left: 5px;
+  top: 16px;
   width: 26px;
   height: 3px;
+  margin: 0;
+  padding: 0;
   background: #d0d0d0;
   border-radius: 2px;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transform-origin: 13px 1.5px;
+  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.toc-toggle span:nth-child(1) {
+  transform: translateY(-8px);
+}
+
+.toc-toggle span:nth-child(2) {
+  transform: translateY(0);
+}
+
+.toc-toggle span:nth-child(3) {
+  transform: translateY(8px);
 }
 
 .toc-toggle:hover span {
@@ -132,15 +146,16 @@ body.jp-Notebook {
 }
 
 .toc-toggle.active span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+  transform: translateY(0) rotate(45deg);
 }
 
 .toc-toggle.active span:nth-child(2) {
   opacity: 0;
+  transform: translateY(0) scaleX(0);
 }
 
 .toc-toggle.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+  transform: translateY(0) rotate(-45deg);
 }
 
 /* =========================
@@ -476,7 +491,8 @@ toc_html = """
 </aside>
 """
 
-toc_script = """<script>
+toc_script = """
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const tocList = document.getElementById("toc-list");
   const toggle = document.getElementById("toc-toggle");
@@ -524,7 +540,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   headings.forEach(heading => observer.observe(heading));
 });
-</script>"""
+</script>
+"""
 
 html = html.replace("</head>", header_css + "</head>", 1)
 

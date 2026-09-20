@@ -7797,6 +7797,8 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
+<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap');
 
@@ -7844,11 +7846,22 @@ body.jp-Notebook {
   line-height: 1.5 !important;
   text-decoration: none !important;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-name img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  transform: scale(1.25);
 }
 
 .nav-name:hover {
   color: #ffffff !important;
-  font-weight: 700 !important;
 }
 
 .nav-links {
@@ -7870,7 +7883,6 @@ body.jp-Notebook {
 
 .nav-links a:hover {
   color: #ffffff !important;
-  font-weight: 700 !important;
 }
 
 /* =========================
@@ -8237,7 +8249,10 @@ body.toc-hidden .note-toc {
 <body class="jp-Notebook toc-hidden" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <nav class="site-nav">
   <div class="nav-inner">
-    <a class="nav-name" href="/">Adam Mendoza</a>
+    <a class="nav-name" href="/">
+      <img src="/assets/images/favicon_inv.png" alt="">
+      <span>Adam Mendoza</span>
+    </a>
 
     <div class="nav-links">
       <a href="/about/">About</a>

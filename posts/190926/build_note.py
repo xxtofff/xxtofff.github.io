@@ -21,6 +21,10 @@ html = html.replace("""MathJax.Hub.Config({
                     },
                     equationNumbers: {""", 1)
 
+favicon_html = """
+<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+"""
+
 header_css = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap');
@@ -69,11 +73,22 @@ body.jp-Notebook {
   line-height: 1.5 !important;
   text-decoration: none !important;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-name img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  transform: scale(1.25);
 }
 
 .nav-name:hover {
   color: #ffffff !important;
-  font-weight: 700 !important;
 }
 
 .nav-links {
@@ -95,7 +110,6 @@ body.jp-Notebook {
 
 .nav-links a:hover {
   color: #ffffff !important;
-  font-weight: 700 !important;
 }
 
 /* =========================
@@ -463,7 +477,10 @@ body.toc-hidden .note-toc {
 header_html = """
 <nav class="site-nav">
   <div class="nav-inner">
-    <a class="nav-name" href="/">Adam Mendoza</a>
+    <a class="nav-name" href="/">
+      <img src="/assets/images/favicon_inv.png" alt="">
+      <span>Adam Mendoza</span>
+    </a>
 
     <div class="nav-links">
       <a href="/about/">About</a>
@@ -490,13 +507,9 @@ toc_script = """<script>
 document.addEventListener("DOMContentLoaded",()=>{const tocList=document.getElementById("toc-list"),toggle=document.getElementById("toc-toggle"),headings=document.querySelectorAll("main h2, main h3");headings.forEach((heading,index)=>{if(!heading.id)heading.id="section-"+index;const li=document.createElement("li");li.className=heading.tagName.toLowerCase()==="h3"?"toc-h3":"toc-h2";const link=document.createElement("a");link.href="#"+heading.id;link.textContent=heading.textContent.replace("¶","").trim();link.addEventListener("click",()=>{heading.scrollIntoView({behavior:"smooth",block:"start"});});li.appendChild(link);tocList.appendChild(li);});toggle.addEventListener("click",()=>{const hidden=document.body.classList.toggle("toc-hidden");toggle.classList.toggle("active",!hidden);toggle.setAttribute("aria-expanded",String(!hidden));toggle.setAttribute("aria-label",hidden?"Show table of contents":"Hide table of contents");});const links=Array.from(tocList.querySelectorAll("a"));const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.remove("active"));const activeLink=tocList.querySelector('a[href="#'+entry.target.id+'"]');if(activeLink)activeLink.classList.add("active");}});},{rootMargin:"-90px 0px -70% 0px",threshold:0});headings.forEach(heading=>observer.observe(heading));});
 </script>"""
 
-html = html.replace("</head>", header_css + "</head>", 1)
+html = html.replace("</head>", favicon_html + header_css + "</head>", 1)
 
-html = html.replace(
-    "<main>",
-    '<div class="note-layout">' + toc_html + "<main>",
-    1
-)
+html = html.replace("<main>", '<div class="note-layout">' + toc_html + "<main>", 1)
 
 html = html.replace("</main>", "</main></div>", 1)
 

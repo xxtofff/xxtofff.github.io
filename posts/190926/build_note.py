@@ -10,7 +10,7 @@ subprocess.run([sys.executable, "-m", "nbconvert", "--to", "html", "--template",
 generated_file = notebook.with_suffix(".html")
 html = generated_file.read_text(encoding="utf-8")
 
-html = html.replace("<title>linear_regression_from_scratch</title>", "<title>Linear Regression from Scratch</title>", 1)
+html = html.replace("<title>linear_regression_from_scratch</title>", "<title>Linear Regression from Scratch - Adam Mendoza</title>", 1)
 
 html = html.replace("""MathJax.Hub.Config({
                 TeX: {

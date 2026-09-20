@@ -50,7 +50,7 @@ body {
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 12px;
 }
 
 .nav-name img {
@@ -286,6 +286,7 @@ footer {
 
   .nav-name {
     font-size: 22px;
+    gap: 10px;
   }
 
   .nav-links {
@@ -376,6 +377,7 @@ footer {
 
   .nav-name {
     font-size: 21px;
+    gap: 9px;
   }
 
   .nav-links {

@@ -27,7 +27,8 @@ html {
 }
 
 body.jp-Notebook {
-  padding-top: 99px !important;
+  margin: 0;
+  padding: calc(64px + 35px) 0 0 0 !important;
   overflow-x: hidden !important;
 }
 
@@ -52,10 +53,10 @@ body.jp-Notebook {
 }
 
 .nav-name {
-  color: #ffffff;
-  font-size: 24px;
-  font-weight: 500;
-  text-decoration: none;
+  color: #ffffff !important;
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
@@ -72,7 +73,7 @@ body.jp-Notebook {
 }
 
 .nav-name:hover {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .nav-links {
@@ -82,14 +83,14 @@ body.jp-Notebook {
 }
 
 .nav-links a {
-  color: #d0d0d0;
-  font-size: 18px;
-  text-decoration: none;
+  color: #d0d0d0 !important;
+  font-size: 18px !important;
+  text-decoration: none !important;
   white-space: nowrap;
 }
 
 .nav-links a:hover {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .toc-toggle {
@@ -111,6 +112,8 @@ body.jp-Notebook {
   top: 16px;
   width: 26px;
   height: 3px;
+  margin: 0;
+  padding: 0;
   background: #d0d0d0;
   border-radius: 2px;
   transform-origin: 13px 1.5px;
@@ -296,7 +299,7 @@ body.toc-hidden .note-toc {
 
 @media screen and (max-width: 960px) {
   body.jp-Notebook {
-    padding-top: 160px !important;
+    padding: calc(125px + 35px) 0 0 0 !important;
   }
 
   .site-nav {
@@ -314,7 +317,7 @@ body.toc-hidden .note-toc {
   }
 
   .nav-name {
-    font-size: 22px;
+    font-size: 22px !important;
     gap: 10px;
   }
 
@@ -323,7 +326,7 @@ body.toc-hidden .note-toc {
   }
 
   .nav-links a {
-    font-size: 17px;
+    font-size: 17px !important;
   }
 
   .note-layout {
@@ -387,7 +390,7 @@ body.toc-hidden .note-toc {
 
 @media screen and (max-width: 500px) {
   body.jp-Notebook {
-    padding-top: 155px !important;
+    padding: calc(120px + 35px) 0 0 0 !important;
   }
 
   .site-nav {
@@ -400,7 +403,7 @@ body.toc-hidden .note-toc {
   }
 
   .nav-name {
-    font-size: 21px;
+    font-size: 21px !important;
     gap: 9px;
   }
 
@@ -411,7 +414,7 @@ body.toc-hidden .note-toc {
   }
 
   .nav-links a {
-    font-size: 16px;
+    font-size: 16px !important;
   }
 
   .toc-toggle {

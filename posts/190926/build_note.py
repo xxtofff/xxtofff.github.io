@@ -105,7 +105,7 @@ body.jp-Notebook {
 
 .theme-toggle {
   position: absolute;
-  right: 185px;
+  right: 68px;
   top: 50%;
   width: 22px;
   height: 22px;
@@ -397,6 +397,35 @@ body.night-mode .jp-OutputArea-output {
   color: #d4d4d4 !important;
 }
 
+body.night-mode .jp-Editor,
+body.night-mode .jp-CodeMirrorEditor,
+body.night-mode .cm-editor,
+body.night-mode .cm-scroller,
+body.night-mode .cm-content {
+  background: #252525 !important;
+  color: #d4d4d4 !important;
+}
+
+body.night-mode .cm-gutters {
+  background: #252525 !important;
+  color: #888888 !important;
+  border-right-color: #444444 !important;
+}
+
+body.night-mode .jp-InputArea-editor {
+  background: #252525 !important;
+  border-color: #444444 !important;
+}
+
+body.night-mode .cm-content,
+body.night-mode .cm-line {
+  color: #d4d4d4 !important;
+}
+
+body.night-mode .cm-gutters {
+  color: #888888 !important;
+}
+
 body.night-mode .jp-InputArea-editor,
 body.night-mode .jp-OutputArea-output {
   border-color: #444444 !important;
@@ -430,10 +459,11 @@ body.night-mode .note-toc a.active {
 
 body.night-mode .theme-toggle {
   background: #ffffff;
+  box-shadow: 0 0 0 3px #ffffff;
 }
 
 body.night-mode .theme-toggle::after {
-  background: #242424;
+  display: none;
 }
 
 /* =========================

@@ -249,8 +249,8 @@ body.jp-Notebook > .note-layout > main {
   align-self: start;
   font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   transform: translateX(0);
-  transition: transform 0.35s ease;
-  will-change: transform;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+  will-change: transform, opacity;
 }
 
 .note-toc-title {
@@ -308,6 +308,7 @@ body.toc-hidden .note-layout {
 
 body.toc-hidden .note-toc {
   transform: translateX(-30px);
+  opacity: 0;
   pointer-events: none;
 }
 
@@ -401,14 +402,13 @@ body.toc-hidden .note-toc {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     z-index: 900;
     transform: translateX(0);
-    transition: transform 0.35s ease;
   }
 
   body.toc-hidden .note-toc {
     transform: translateX(calc(-100% - 30px));
+    opacity: 1;
     width: 260px;
     max-height: calc(100vh - 160px);
-    opacity: 1;
   }
 
   .jp-RenderedHTMLCommon {
@@ -472,7 +472,7 @@ header_html = """
   </div>
 </nav>
 
-<button class="toc-toggle active" id="toc-toggle" type="button" aria-label="Hide table of contents" aria-expanded="true">
+<button class="toc-toggle" id="toc-toggle" type="button" aria-label="Show table of contents" aria-expanded="false">
   <span></span>
   <span></span>
   <span></span>
@@ -486,7 +486,9 @@ toc_html = """
 </aside>
 """
 
-toc_script = """<script>document.addEventListener("DOMContentLoaded",()=>{const tocList=document.getElementById("toc-list"),toggle=document.getElementById("toc-toggle"),headings=document.querySelectorAll("main h2, main h3");headings.forEach((heading,index)=>{if(!heading.id)heading.id="section-"+index;const li=document.createElement("li");li.className=heading.tagName.toLowerCase()==="h3"?"toc-h3":"toc-h2";const link=document.createElement("a");link.href="#"+heading.id;link.textContent=heading.textContent.replace("¶","").trim();link.addEventListener("click",()=>{heading.scrollIntoView({behavior:"smooth",block:"start"});});li.appendChild(link);tocList.appendChild(li);});toggle.addEventListener("click",()=>{const hidden=document.body.classList.toggle("toc-hidden");toggle.classList.toggle("active",!hidden);toggle.setAttribute("aria-expanded",String(!hidden));toggle.setAttribute("aria-label",hidden?"Show table of contents":"Hide table of contents");});const links=Array.from(tocList.querySelectorAll("a"));const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.remove("active"));const activeLink=tocList.querySelector('a[href="#'+entry.target.id+'"]');if(activeLink)activeLink.classList.add("active");}});},{rootMargin:"-90px 0px -70% 0px",threshold:0});headings.forEach(heading=>observer.observe(heading));});</script>"""
+toc_script = """<script>
+document.addEventListener("DOMContentLoaded",()=>{const tocList=document.getElementById("toc-list"),toggle=document.getElementById("toc-toggle"),headings=document.querySelectorAll("main h2, main h3");headings.forEach((heading,index)=>{if(!heading.id)heading.id="section-"+index;const li=document.createElement("li");li.className=heading.tagName.toLowerCase()==="h3"?"toc-h3":"toc-h2";const link=document.createElement("a");link.href="#"+heading.id;link.textContent=heading.textContent.replace("¶","").trim();link.addEventListener("click",()=>{heading.scrollIntoView({behavior:"smooth",block:"start"});});li.appendChild(link);tocList.appendChild(li);});toggle.addEventListener("click",()=>{const hidden=document.body.classList.toggle("toc-hidden");toggle.classList.toggle("active",!hidden);toggle.setAttribute("aria-expanded",String(!hidden));toggle.setAttribute("aria-label",hidden?"Show table of contents":"Hide table of contents");});const links=Array.from(tocList.querySelectorAll("a"));const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.remove("active"));const activeLink=tocList.querySelector('a[href="#'+entry.target.id+'"]');if(activeLink)activeLink.classList.add("active");}});},{rootMargin:"-90px 0px -70% 0px",threshold:0});headings.forEach(heading=>observer.observe(heading));});
+</script>"""
 
 html = html.replace("</head>", header_css + "</head>", 1)
 
@@ -500,7 +502,7 @@ html = html.replace("</main>", "</main></div>", 1)
 
 html = html.replace(
     '<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">',
-    '<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">' + header_html,
+    '<body class="jp-Notebook toc-hidden" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">' + header_html,
     1
 )
 

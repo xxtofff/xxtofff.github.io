@@ -48,18 +48,6 @@ body {
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.nav-name img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  display: block;
-  flex-shrink: 0;
-  transform: scale(1.35);
 }
 
 .nav-name:hover {
@@ -286,7 +274,6 @@ footer {
 
   .nav-name {
     font-size: 22px;
-    gap: 10px;
   }
 
   .nav-links {
@@ -377,7 +364,6 @@ footer {
 
   .nav-name {
     font-size: 21px;
-    gap: 9px;
   }
 
   .nav-links {

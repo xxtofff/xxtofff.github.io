@@ -55,7 +55,7 @@ body.jp-Notebook {
 .nav-name {
   color: #ffffff !important;
   font-size: 24px !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   text-decoration: none !important;
   white-space: nowrap;
   display: inline-flex;
@@ -74,6 +74,7 @@ body.jp-Notebook {
 
 .nav-name:hover {
   color: #ffffff !important;
+  font-weight: 400 !important;
 }
 
 .nav-links {

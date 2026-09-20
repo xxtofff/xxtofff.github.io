@@ -39,7 +39,6 @@ body.jp-Notebook {
   top: 0;
   left: 0;
   z-index: 1000;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .nav-inner {
@@ -53,10 +52,10 @@ body.jp-Notebook {
 }
 
 .nav-name {
-  color: #ffffff !important;
-  font-size: 24px !important;
-  font-weight: 500 !important;
-  text-decoration: none !important;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
+  text-decoration: none;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
@@ -73,7 +72,7 @@ body.jp-Notebook {
 }
 
 .nav-name:hover {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .nav-links {
@@ -83,14 +82,14 @@ body.jp-Notebook {
 }
 
 .nav-links a {
-  color: #d0d0d0 !important;
-  font-size: 18px !important;
-  text-decoration: none !important;
+  color: #d0d0d0;
+  font-size: 18px;
+  text-decoration: none;
   white-space: nowrap;
 }
 
 .nav-links a:hover {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .toc-toggle {
@@ -220,7 +219,6 @@ body.jp-Notebook > .note-layout > main {
   max-height: calc(100vh - 115px);
   overflow-y: auto;
   align-self: start;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   transform: translateX(0);
   transition: transform 0.35s ease, opacity 0.25s ease;
 }
@@ -260,7 +258,6 @@ body.jp-Notebook > .note-layout > main {
 
 .note-toc a:hover {
   color: #242424 !important;
-  font-weight: 700 !important;
 }
 
 .note-toc a.active {
@@ -317,7 +314,7 @@ body.toc-hidden .note-toc {
   }
 
   .nav-name {
-    font-size: 22px !important;
+    font-size: 22px;
     gap: 10px;
   }
 
@@ -326,7 +323,7 @@ body.toc-hidden .note-toc {
   }
 
   .nav-links a {
-    font-size: 17px !important;
+    font-size: 17px;
   }
 
   .note-layout {
@@ -403,7 +400,7 @@ body.toc-hidden .note-toc {
   }
 
   .nav-name {
-    font-size: 21px !important;
+    font-size: 21px;
     gap: 9px;
   }
 
@@ -414,7 +411,7 @@ body.toc-hidden .note-toc {
   }
 
   .nav-links a {
-    font-size: 16px !important;
+    font-size: 16px;
   }
 
   .toc-toggle {

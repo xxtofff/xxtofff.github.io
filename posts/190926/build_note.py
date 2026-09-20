@@ -23,11 +23,8 @@ html = html.replace("""MathJax.Hub.Config({
 
 header_css = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap');
-
 html {
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 *, *:before, *:after {
@@ -58,7 +55,6 @@ body.jp-Notebook {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 .nav-name {
@@ -85,7 +81,6 @@ body.jp-Notebook {
   display: flex;
   align-items: center;
   gap: 42px;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 .nav-links a {
@@ -497,11 +492,7 @@ document.addEventListener("DOMContentLoaded",()=>{const tocList=document.getElem
 
 html = html.replace("</head>", header_css + "</head>", 1)
 
-html = html.replace(
-    "<main>",
-    '<div class="note-layout">' + toc_html + "<main>",
-    1
-)
+html = html.replace("<main>", '<div class="note-layout">' + toc_html + "<main>", 1)
 
 html = html.replace("</main>", "</main></div>", 1)
 

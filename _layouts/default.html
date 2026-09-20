@@ -24,11 +24,28 @@
   <title>{{ page.title | default: site.title }}</title>
   <link rel="icon" type="image/png" href="{{ "/assets/images/favicon.png" | relative_url }}">
   <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+
+  <style>
+    .nav-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .nav-name img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
   <nav class="site-nav">
     <div class="nav-inner">
-      <a class="nav-name" href="{{ "/" | relative_url }}">Adam Mendoza</a>
+      <a class="nav-name" href="{{ "/" | relative_url }}">
+        <img src="{{ "/assets/images/favicon_inv.png" | relative_url }}" alt="">
+        <span>Adam Mendoza</span>
+      </a>
 
       <div class="nav-links">
         <a href="{{ "/about/" | relative_url }}">About</a>

@@ -8288,7 +8288,7 @@ body.toc-hidden .note-toc {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Simple-Linear-Regression"><strong>Simple Linear Regression</strong><a class="anchor-link" href="#Simple-Linear-Regression">¶</a></h2><p>Assume that a collection of measurements $\{(X_i,Y_i)\}_{i=1}^N$ is linearly related:</p>
+<h2 id="Simple-Linear-Regression"><strong>Simple Linear Regression</strong><a class="anchor-link" href="#Simple-Linear-Regression">¶</a></h2><h3 id="Key-equations"><strong>Key equations</strong><a class="anchor-link" href="#Key-equations">¶</a></h3><p>Assume that a collection of measurements $\{(X_i,Y_i)\}_{i=1}^N$ is linearly related:</p>
 <p>\begin{align*}
 Y_i &amp;= \beta_0 + \beta_1 X_i + \epsilon_i.
 \end{align*}</p>
@@ -8371,17 +8371,6 @@ N\hat\beta_0\bar{X}+N\hat\beta_1(\text{Var}(\mathbf{X})+\bar{X}^2)&amp;=N(\text{
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5542e850">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Application:-Synthetic-Data"><strong>Application: Synthetic Data</strong><a class="anchor-link" href="#Application:-Synthetic-Data">¶</a></h3>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=04e4762c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8435,7 +8424,7 @@ N\hat\beta_0\bar{X}+N\hat\beta_1(\text{Var}(\mathbf{X})+\bar{X}^2)&amp;=N(\text{
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>We generate a synthetic data defined by the relation</p>
+<p>To test the above method, we generate a synthetic data defined by the relation</p>
 <p>\begin{align*}
 Y_i = \frac{1}{4}X_i + \epsilon_i
 \end{align*}</p>
@@ -8493,7 +8482,7 @@ Y_i = \frac{1}{4}X_i + \epsilon_i
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>We might think that since we have obtained slope and intercept estimates close to the values we used to generate our data, we can already pat ourselves on the back for a job well done. But this is cheating. We knew the data-generating process, and therefore we knew what the true parameters were supposed to be. Think instead about the case where the data-generating process is completely unknown to us. We only have the cold dataset, which we cannot really interrogate. If we were to repeatedly sample from the underlying population, how much would our estimates change from sample to sample? In other words, how reliable are our estimates? Because relying solely on point estimates to draw conclusions is not only reckless but also dangerous.</p>
+<h3 id="Confidence-interval"><strong>Confidence interval</strong><a class="anchor-link" href="#Confidence-interval">¶</a></h3><p>We might think that since we have obtained slope and intercept estimates close to the values we used to generate our data, we can already pat ourselves on the back for a job well done. But this is cheating. We knew the data-generating process, and therefore we knew what the true parameters were supposed to be. Think instead about the case where the data-generating process is completely unknown to us. We only have the cold dataset, which we cannot really interrogate. If we were to repeatedly sample from the underlying population, how much would our estimates change from sample to sample? In other words, how reliable are our estimates? Because relying solely on point estimates to draw conclusions is not only reckless but also dangerous.</p>
 <p>Ideally, we would answer this by repeatedly collecting new samples from the population, fitting our model to each sample, and looking at how the resulting estimates vary. This would give us the <strong>sampling distribution</strong> of our estimator. The problem, of course, is that we usually do not have the luxury of repeatedly sampling from the population. We may have only one dataset, and the population distribution is unknown to us.</p>
 <p>This is where the <strong>bootstrap</strong> comes in. The basic idea is deceptively simple: we treat the data we actually observed as a stand-in for the unknown population. The empirical distribution of our observed data gives every observed data pair a probability of $1/n$. We then repeatedly sample from this empirical distribution, with replacement, creating many new datasets that resemble the original dataset but are not identical to it. By fitting our model to each of these bootstrap datasets, we can see how much our estimated parameters vary. In this way, the bootstrap gives us an approximation to the sampling distribution of our estimator without having to repeatedly sample from the actual population. Think of it as a simulation of repeated experiments. We do not know how the population would vary across repeated samples, so we use the variation contained in our observed sample to imitate that process.</p>
 <p>To address this, we use a <strong>95% bootstrap percentile interval</strong>, which is a specific type of $95\%$ confidence interval (CI). Our $95\%$ CI is a random interval produced by a procedure that contains the true parameter approximately $95\%$ of the time in repeated sampling. The true parameter stays fixed. It is the interval that varies from sample to sample and contains the true parameter approximately $95\%$ of the time.</p>
@@ -8581,7 +8570,7 @@ Y_i = \frac{1}{4}X_i + \epsilon_i
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>It is important to stress that reporting a confidence interval is often more informative than reporting a point estimate alone for two reasons. First, it acknowledges that our estimate is subject to sampling uncertainty and that factors not captured by our model can affect the observed data. Second, the interval provides a range of plausible values for the parameter under the chosen confidence-interval procedure, allowing us to account for uncertainty when making decisions or preparing for different possible scenarios.</p>
-<p>We can now ask a more specific question: is our estimated slope statistically distinguishable from zero? In other words, is the relationship we observe between $X$ and $Y$ sufficiently strong that it would be unusual to obtain such a slope if there were actually no association between the two variables? Our confidence interval already gives us some information about this. If the interval excludes $0$, then $0$ is not among the parameter values contained within the interval under the chosen confidence-interval procedure. This suggests that a zero slope is inconsistent with the range of values supported by our interval. However, the confidence interval and the hypothesis test are answering slightly different questions, so we will examine the question directly using a <strong>permutation test</strong>.</p>
+<h3 id="Hypothesis-testing"><strong>Hypothesis testing</strong><a class="anchor-link" href="#Hypothesis-testing">¶</a></h3><p>We can now ask a more specific question: is the association we observe between $X$ and $Y$ sufficiently strong that it would be unusual to obtain such a slope if there were actually no association between the two variables? Our confidence interval already gives us some information about this. If the interval excludes $0$, then $0$ is not among the parameter values contained within the interval under the chosen confidence-interval procedure. This suggests that a zero slope is inconsistent with the range of values supported by our interval. However, the confidence interval and the hypothesis test are answering slightly different questions, so we will examine the question directly using a <strong>permutation test</strong>.</p>
 <p>The idea is to construct a reference distribution for our slope under a null hypothesis in which there is no association between $X$ and $Y$. We begin with the data we actually observed and then randomly shuffle the $Y$ values while leaving the $X$ values fixed. This destroys the original pairing between $X$ and $Y$. If there was a genuine association between them, that association should disappear when the pairing is randomly rearranged. What remains is the kind of slope we might obtain purely from chance when there is no association.</p>
 <p>This is the key idea behind the permutation test: rather than trying to simulate repeated samples from the population, as we did with the bootstrap, we simulate what our data would look like <strong>under the null hypothesis</strong>. We then ask whether our observed slope looks unusual relative to this null distribution. Permuting $Y$ relative to $X$ is appropriate when the null hypothesis implies that the observations are exchangeable under this permutation. In this simple setting, the procedure provides a reference distribution for the slope under the null hypothesis of <strong>no association</strong> ($H_0: X\perp Y$). In other words, if there are no sort of relation <strong>at all</strong>, be it linear or not. We then construct the <em>null distribution</em> of our chosen statistic and use it to compare against our observed result. The method is as follows:</p>
 <ol>
@@ -8670,7 +8659,7 @@ $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>A cautious student may perform all the calculations above and still be left unconvinced. While it is true that there is a statistically significant trend, and we know the possible wiggle room of the parameters based on the uncertainty inherent in our methods, this is not an assessment of the quality of our regression. Can we trust the regression line based on its ability to explain the variation in the observed data? We will answer this question. Let $\bar Y$ denote the sample mean of $Y$. Suppose we want to describe the variation of the observed data in terms of the variation of the fitted data and the residuals.</p>
+<h3 id="Coefficient-of-determination"><strong>Coefficient of determination</strong><a class="anchor-link" href="#Coefficient-of-determination">¶</a></h3><p>A cautious student may perform all the calculations above and still be left unconvinced. While it is true that there is a statistically significant trend, and we know the possible wiggle room of the parameters based on the uncertainty inherent in our methods, this is not an assessment of the quality of our regression. Can we trust the regression line based on its ability to explain the variation in the observed data? We will answer this question. Let $\bar Y$ denote the sample mean of $Y$. Suppose we want to describe the variation of the observed data in terms of the variation of the fitted data and the residuals.</p>
 <p>\begin{align*}
 \sum_{i}(Y_i-\bar Y)^2&amp;=\sum_{i}(Y_i-\hat Y_i+\hat Y_i-\bar Y)^2,\\
 &amp;=\sum_{i}(Y_i-\hat Y_i)^2+\sum_{i}(\hat Y_i-\bar Y)^2+2\sum_{i}(Y_i-\hat Y_i)(\hat Y_i-\bar Y)
@@ -8770,7 +8759,7 @@ R^2&amp;=\frac{\text{ESS}}{\text{TSS}}=1-\frac{\text{RSS}}{\text{TSS}}
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Multiple-Linear-Regression"><strong>Multiple Linear Regression</strong><a class="anchor-link" href="#Multiple-Linear-Regression">¶</a></h2><p>Suppose we have $m$ observations with $n$ predictors. We can write the relationship in vectorized form as</p>
+<h2 id="Multiple-Linear-Regression"><strong>Multiple Linear Regression</strong><a class="anchor-link" href="#Multiple-Linear-Regression">¶</a></h2><h3 id="Derivation"><strong>Derivation</strong><a class="anchor-link" href="#Derivation">¶</a></h3><p>Suppose we have $m$ observations with $n$ predictors. We can write the relationship in vectorized form as</p>
 <p>\begin{align*}
 \mathbf{Y}&amp;=\mathbf{X}\bm{\beta}+\bm{\epsilon}.
 \end{align*}</p>
@@ -8807,7 +8796,7 @@ X_{ik}Y_i&amp;=X_{ik}X_{ij}\hat\beta_j.
 &amp;=\bm\beta.
 \end{align*}</p>
 <p>In other words, conditional on $\mathbf X$, the least squares estimator is <strong>unbiased</strong> for $\bm\beta$. If we were to repeatedly sample from the same data-generating process, the average of the resulting estimates would approach the true $\bm\beta$.</p>
-<p>Using the expression for $\bm{\hat\beta}$, we can write the vector of residuals as</p>
+<h3 id="Residuals"><strong>Residuals</strong><a class="anchor-link" href="#Residuals">¶</a></h3><p>Using the expression for $\bm{\hat\beta}$, we can write the vector of residuals as</p>
 <p>\begin{align*}
 \mathbf e
 &amp;=[\mathbf I-\mathbf X(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T]\mathbf{Y}.
@@ -9147,7 +9136,7 @@ X_{ik}Y_i&amp;=X_{ik}X_{ij}\hat\beta_j.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Frisch-Waugh-Lovell-Procedure"><strong>Frisch-Waugh-Lovell Procedure</strong><a class="anchor-link" href="#Frisch-Waugh-Lovell-Procedure">¶</a></h2><p>Let us split the predictor matrix by isolating the predictor of interest as a vector:</p>
+<h3 id="Frisch-Waugh-Lovell-result"><strong>Frisch-Waugh-Lovell result</strong><a class="anchor-link" href="#Frisch-Waugh-Lovell-result">¶</a></h3><p>Let us split the predictor matrix by isolating the predictor of interest as a vector:</p>
 <p>\begin{align*}
 \mathbf{Y} &amp;= \mathbf{u}\beta_1+\mathbf{X}\bm{\beta}_2+\bm{\epsilon}.
 \end{align*}</p>
@@ -9296,7 +9285,7 @@ beta_3: -0.0010
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>These are the exact same coefficients obtained from the original procedure. As promised, we will return to the interpretation of the negative regression coefficient for newspaper advertising expenditure. In light of our new conceptual insight, the result points to a negative association between advertising expenditure and sales. Larger newspaper expenditure is associated with lower sales! One might be skeptical of this result since, after all, the coefficient is small. Moreover, if we return to our earlier confidence interval, it actually includes $0$, suggesting that there might be no association at all.</p>
-<p>We can therefore ask the same question we asked in the simple linear regression case: <strong>if there truly is no relationship between newspaper advertising expenditure and sales, how surprising is our observed coefficient?</strong> The difference is that we are now dealing with a multiple regression model. We cannot simply shuffle the response variable, because doing so would destroy the relationships between the response and all of the other predictors as well. Instead, we want to test the newspaper coefficient while preserving the effects of the other predictors in the model.</p>
+<h3 id="Freedman-Lane-Procedure"><strong>Freedman-Lane Procedure</strong><a class="anchor-link" href="#Freedman-Lane-Procedure">¶</a></h3><p>We can therefore ask the same question we asked in the simple linear regression case: <strong>if there truly is no relationship between newspaper advertising expenditure and sales, how surprising is our observed coefficient?</strong> The difference is that we are now dealing with a multiple regression model. We cannot simply shuffle the response variable, because doing so would destroy the relationships between the response and all of the other predictors as well. Instead, we want to test the newspaper coefficient while preserving the effects of the other predictors in the model.</p>
 <p>This is where the <strong>Freedman-Lane procedure</strong> comes in. The idea is to treat the other predictors as <em>nuisance predictors</em>. We first explain as much of the response as possible using these nuisance predictors, leaving behind residual variation. We then randomly permute only this unexplained part and add it back to the fitted values. This gives us new response variables that preserve the structure explained by the nuisance predictors while removing the specific association between the predictor being tested and the remaining variation in the response.</p>
 <p>In this sense, the Freedman-Lane procedure extends the logic of our earlier permutation test to multiple regression. Instead of asking whether a coefficient is unusual when <strong>all associations are destroyed</strong>, we ask whether that coefficient is unusual when the effects of the other predictors are retained.</p>
 <p>The method is as follows:</p>
@@ -9419,55 +9408,6 @@ This collection forms a reference distribution for $\hat\beta_i$ under the null 
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=96141334">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>We can also assess the quality of our model through the sum-of-squares decomposition, but now in vector form. Let $\mathbf{\bar Y}$ denote a vector whose components are all equal to the mean value of $\mathbf Y$. We decompose the TSS as follows:</p>
-<p>\begin{align*}
-(\mathbf{Y}-\mathbf{\bar Y})^T(\mathbf{Y}-\mathbf{\bar Y})
-&amp;=(\mathbf{Y}-\mathbf{\hat Y}+\mathbf{\hat Y}-\mathbf{\bar Y})^T(\mathbf{Y}-\mathbf{\hat Y}+\mathbf{\hat Y}-\mathbf{\bar Y})\\
-&amp;=(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{Y}-\mathbf{\hat Y})
-+(\mathbf{\hat Y}-\mathbf{\bar Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y})
-+2(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y}).
-\end{align*}</p>
-<p>We see that this should be the usual decomposition $\text{TSS}=\text{RSS}+\text{ESS}$ except for the final cross term. Our intuition tells us that this should somehow reduce to zero. Decomposing this term further:</p>
-<p>\begin{align*}
-(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y})
-&amp;=(\mathbf{Y}^T\mathbf{\hat Y}-\mathbf{\hat Y}^T\mathbf{\hat Y})
-+(\mathbf{\hat Y}^T\mathbf{\bar Y}-\mathbf{Y}^T\mathbf{\bar Y}).
-\end{align*}</p>
-<p>The first term is zero, and we can see this by rewriting $\mathbf{\hat Y}$ in terms of the projection matrix, $\mathbf P$, which is symmetric and idempotent:</p>
-<p>\begin{align*}
-\mathbf{\hat Y}^T\mathbf{\hat Y}
-&amp;=(\mathbf{P}\mathbf{Y})^T(\mathbf{P}\mathbf{Y})\\
-&amp;=\mathbf{Y}^T\mathbf{P}^T\mathbf{P}\mathbf{Y}\\
-&amp;=\mathbf{Y}^T\mathbf{P}^2\mathbf{Y}\\
-&amp;=\mathbf{Y}^T\mathbf{P}\mathbf{Y}\\
-&amp;=\mathbf{Y}^T\mathbf{\hat Y}.
-\end{align*}</p>
-<p>The second term is zero since it reduces to the sum of the residuals. Observe that</p>
-<p>\begin{align*}
-\mathbf{\hat Y}^T\mathbf{\bar Y}-\mathbf{Y}^T\mathbf{\bar Y}
-&amp;=-(\mathbf{Y}-\mathbf{\hat Y})^T\mathbf{\bar Y}\\
-&amp;=-\mathbf{e}^T\mathbf{\bar Y}.
-\end{align*}</p>
-<p>The point where it reduces to zero becomes apparent if we write this as an explicit summation:</p>
-<p>\begin{align*}
-\mathbf{e}^T\mathbf{\bar Y}&amp;=\bar Y\sum_i e_i.
-\end{align*}</p>
-<p>Recall that $\mathbf X^T \mathbf e=0$. The first column of $\mathbf X$ is a column of ones, so the first element of $\mathbf X^T \mathbf e$ is necessarily the sum of the residuals, which is zero. Our intuition is therefore correct, leading us to the usual decomposition:</p>
-<p>\begin{align*}
-(\mathbf{Y}-\mathbf{\bar Y})^T(\mathbf{Y}-\mathbf{\bar Y})
-&amp;=(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{Y}-\mathbf{\hat Y})
-+(\mathbf{\hat Y}-\mathbf{\bar Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y}).
-\end{align*}</p>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=40346619">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9554,7 +9494,8 @@ This collection forms a reference distribution for $\hat\beta_i$ under the null 
 <h2 id="References"><strong>References</strong><a class="anchor-link" href="#References">¶</a></h2><ul>
 <li>Bruce, P., Bruce, A., &amp; Gedeck, P. (2020). <em>Practical Statistics for Data Scientists: 50+ Essential Concepts Using R and Python</em> (2nd ed.). O'Reilly Media.</li>
 <li>Chan, S. H. (2021). <em>Introduction to Probability for Data Science</em>. University of Illinois at Urbana-Champaign.</li>
-<li>Facure, M. (2023). <em>Causal Inference for the Brave and True</em>. <a href="https://matheusfacure.github.io/python-causality-handbook/">https://matheusfacure.github.io/python-causality-handbook/</a></li>
+<li>Facure, M. (2023). <a href="https://matheusfacure.github.io/python-causality-handbook/"><em>Causal Inference for the Brave and True</em></a></li>
+<li>Winkler, A. M., Ridgway, G. R., Webster, M. A., Smith, S. M., &amp; Nichols, T. E. (2014). <a href="https://doi.org/10.1016/j.neuroimage.2014.01.060">Permutation inference for the general linear model</a>. <em>NeuroImage, 92</em>, 381–397.</li>
 </ul>
 </div>
 </div>

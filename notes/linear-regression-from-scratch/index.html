@@ -7944,10 +7944,10 @@ body.jp-Notebook {
   padding-top: 35px;
   padding-bottom: 60px;
   display: grid;
-  grid-template-columns: 230px minmax(0, 1250px);
+  grid-template-columns: 230px minmax(0, 1fr);
   column-gap: 30px;
   align-items: start;
-  transition: width 0.25s ease, grid-template-columns 0.25s ease, column-gap 0.25s ease;
+  transition: grid-template-columns 0.35s ease, column-gap 0.35s ease, width 0.35s ease;
 }
 
 body.jp-Notebook > .note-layout > main {
@@ -8023,6 +8023,9 @@ body.jp-Notebook > .note-layout > main {
   overflow-y: auto;
   align-self: start;
   font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.25s ease, transform 0.35s ease;
 }
 
 .note-toc-title {
@@ -8076,15 +8079,14 @@ body.jp-Notebook > .note-layout > main {
 body.toc-hidden .note-layout {
   width: 1250px;
   max-width: calc(100% - 40px);
-  grid-template-columns: minmax(0, 1250px);
+  grid-template-columns: 0 minmax(0, 1fr);
   column-gap: 0;
 }
 
 body.toc-hidden .note-toc {
-  width: 0;
-  max-height: 0;
+  width: 230px;
   opacity: 0;
-  overflow: hidden;
+  transform: translateX(-30px);
   pointer-events: none;
 }
 
@@ -8181,14 +8183,6 @@ body.toc-hidden .note-toc {
     width: 100%;
     max-width: none;
     display: block;
-  }
-
-  body.toc-hidden .note-toc {
-    width: 0;
-    max-height: 0;
-    padding: 0;
-    border: none;
-    box-shadow: none;
   }
 
   .jp-RenderedHTMLCommon {

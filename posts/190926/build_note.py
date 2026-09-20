@@ -20,6 +20,7 @@ header_css = """
 <style>
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *, *:before, *:after {
@@ -27,8 +28,7 @@ html {
 }
 
 body.jp-Notebook {
-  margin: 0;
-  padding: calc(64px + 35px) 0 0 0 !important;
+  padding-top: 64px !important;
   overflow-x: hidden !important;
 }
 
@@ -93,6 +93,10 @@ body.jp-Notebook {
   color: #ffffff !important;
 }
 
+/* =========================
+   Hamburger menu
+   ========================= */
+
 .toc-toggle {
   position: fixed;
   top: 14px;
@@ -149,287 +153,10 @@ body.jp-Notebook {
   transform: translateY(0) rotate(-45deg);
 }
 
-.note-layout {
-  width: 1510px;
-  max-width: calc(100% - 40px);
-  margin: 0 auto;
-  padding-top: 35px;
-  padding-bottom: 60px;
-  display: grid;
-  grid-template-columns: 230px minmax(0, 1fr);
-  column-gap: 30px;
-  align-items: start;
-  transition: grid-template-columns 0.35s ease, column-gap 0.35s ease;
-}
+/* =========================
+   Notebook layout
+   ========================= */
 
-body.jp-Notebook > .note-layout > main {
-  width: 100% !important;
-  min-width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.jp-RenderedHTMLCommon {
-  font-size: 18px !important;
-  line-height: 1.6 !important;
-}
-
-.jp-RenderedHTMLCommon p {
-  line-height: 1.6 !important;
-  margin-top: 0.9em !important;
-  margin-bottom: 1.15em !important;
-}
-
-.jp-RenderedHTMLCommon h1,
-.jp-RenderedHTMLCommon h2,
-.jp-RenderedHTMLCommon h3,
-.jp-RenderedHTMLCommon h4 {
-  line-height: 1.25 !important;
-  scroll-margin-top: 90px !important;
-}
-
-.jp-RenderedHTMLCommon h1 {
-  margin-top: 0 !important;
-  margin-bottom: 0.8em !important;
-}
-
-.jp-RenderedHTMLCommon h2 {
-  margin-top: 1.8em !important;
-}
-
-.jp-RenderedHTMLCommon h3 {
-  margin-top: 1.5em !important;
-}
-
-.jp-RenderedHTMLCommon img {
-  max-width: 100%;
-  height: auto;
-}
-
-.jp-RenderedHTMLCommon table {
-  max-width: 100%;
-  overflow-x: auto;
-}
-
-.jp-RenderedHTMLCommon pre {
-  overflow-x: auto;
-}
-
-.note-toc {
-  position: sticky;
-  top: 99px;
-  width: 230px;
-  max-height: calc(100vh - 115px);
-  overflow-y: auto;
-  align-self: start;
-  transform: translateX(0);
-  transition: transform 0.35s ease, opacity 0.25s ease;
-}
-
-.note-toc-title {
-  margin: 0 0 14px 0;
-  color: #242424;
-  font-size: 17px !important;
-  font-weight: 700 !important;
-  line-height: 1.4;
-}
-
-.note-toc ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.note-toc li {
-  margin: 0;
-  padding: 0;
-}
-
-.note-toc li.toc-h3 {
-  padding-left: 14px;
-}
-
-.note-toc a {
-  display: block;
-  padding: 4px 0;
-  color: #777777 !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 1.45;
-  text-decoration: none !important;
-}
-
-.note-toc a:hover {
-  color: #242424 !important;
-}
-
-.note-toc a.active {
-  color: #242424 !important;
-  font-weight: 700 !important;
-}
-
-body.toc-hidden .note-layout {
-  grid-template-columns: 0 minmax(0, 1fr);
-  column-gap: 0;
-}
-
-body.toc-hidden .note-toc {
-  transform: translateX(-30px);
-  opacity: 0;
-  pointer-events: none;
-}
-
-@media screen and (max-width: 1550px) {
-  .note-layout {
-    width: calc(100% - 40px);
-    grid-template-columns: 210px minmax(0, 1fr);
-    column-gap: 25px;
-  }
-
-  .note-toc {
-    width: 210px;
-  }
-
-  body.toc-hidden .note-layout {
-    width: calc(100% - 40px);
-    grid-template-columns: 0 minmax(0, 1fr);
-    column-gap: 0;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  body.jp-Notebook {
-    padding: calc(125px + 35px) 0 0 0 !important;
-  }
-
-  .site-nav {
-    height: 125px;
-  }
-
-  .nav-inner {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 18px 20px;
-    flex-direction: column;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .nav-name {
-    font-size: 22px !important;
-    gap: 10px;
-  }
-
-  .nav-links {
-    gap: 28px;
-  }
-
-  .nav-links a {
-    font-size: 17px !important;
-  }
-
-  .note-layout {
-    width: 100%;
-    max-width: none;
-    grid-template-columns: 210px minmax(0, 1fr);
-    column-gap: 25px;
-    padding: 30px 25px 50px 25px;
-  }
-
-  .note-toc {
-    width: 210px;
-    top: 160px;
-  }
-
-  body.toc-hidden .note-layout {
-    width: 100%;
-    max-width: none;
-    grid-template-columns: 0 minmax(0, 1fr);
-    column-gap: 0;
-  }
-
-  .toc-toggle {
-    left: 20px;
-  }
-}
-
-@media screen and (max-width: 760px) {
-  .note-layout {
-    display: block;
-    width: 100%;
-    max-width: none;
-    padding: 25px 20px 45px 20px;
-  }
-
-  .note-toc {
-    position: fixed;
-    top: 140px;
-    left: 20px;
-    width: 260px;
-    max-width: calc(100vw - 40px);
-    max-height: calc(100vh - 160px);
-    padding: 16px;
-    background: var(--jp-layout-color0);
-    border: 1px solid var(--jp-border-color2);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    z-index: 900;
-  }
-
-  body.toc-hidden .note-toc {
-    transform: translateX(calc(-100% - 30px));
-    opacity: 1;
-    width: 260px;
-    max-height: calc(100vh - 160px);
-  }
-
-  .jp-RenderedHTMLCommon {
-    font-size: 17px !important;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  body.jp-Notebook {
-    padding: calc(120px + 35px) 0 0 0 !important;
-  }
-
-  .site-nav {
-    height: 120px;
-  }
-
-  .nav-inner {
-    padding: 16px 15px;
-    gap: 12px;
-  }
-
-  .nav-name {
-    font-size: 21px !important;
-    gap: 9px;
-  }
-
-  .nav-links {
-    width: 100%;
-    justify-content: center;
-    gap: 24px;
-  }
-
-  .nav-links a {
-    font-size: 16px !important;
-  }
-
-  .toc-toggle {
-    top: 42px;
-    left: 20px;
-  }
-
-  .note-toc {
-    top: 140px;
-  }
-
-  body.jp-Notebook > .note-layout {
-    padding-top: 25px;
-  }
-}
 </style>
 """
 

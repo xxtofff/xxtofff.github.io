@@ -8162,34 +8162,29 @@ body.night-mode .jp-RenderedHTMLCommon code {
   color: #e0e0e0 !important;
 }
 
+body.night-mode {
+  --jp-layout-color0: #1e1e1e !important;
+  --jp-layout-color1: #1e1e1e !important;
+  --jp-layout-color2: #252525 !important;
+  --jp-cell-editor-background: #252525 !important;
+  --jp-notebook-selectors-color: #d4d4d4 !important;
+  --jp-border-color0: #444444 !important;
+  --jp-border-color1: #444444 !important;
+  --jp-border-color2: #444444 !important;
+  --jp-ui-font-color1: #d4d4d4 !important;
+  --jp-ui-font-color2: #bdbdbd !important;
+  --jp-content-font-color1: #d4d4d4 !important;
+  --jp-content-font-color2: #bdbdbd !important;
+}
+
 body.night-mode .jp-CodeCell,
 body.night-mode .jp-InputArea,
 body.night-mode .jp-InputArea-editor,
-body.night-mode .jp-InputPrompt,
-body.night-mode .jp-OutputArea,
-body.night-mode .jp-OutputArea-output {
-  background: #1e1e1e !important;
-  color: #d4d4d4 !important;
-}
-
-body.night-mode .jp-Editor,
 body.night-mode .jp-CodeMirrorEditor,
 body.night-mode .cm-editor,
 body.night-mode .cm-scroller,
 body.night-mode .cm-content {
   background: #252525 !important;
-  color: #d4d4d4 !important;
-}
-
-body.night-mode .cm-gutters {
-  background: #252525 !important;
-  color: #888888 !important;
-  border-right-color: #444444 !important;
-}
-
-body.night-mode .jp-InputArea-editor {
-  background: #252525 !important;
-  border-color: #444444 !important;
 }
 
 body.night-mode .cm-content,
@@ -8198,7 +8193,9 @@ body.night-mode .cm-line {
 }
 
 body.night-mode .cm-gutters {
+  background: #252525 !important;
   color: #888888 !important;
+  border-color: #444444 !important;
 }
 
 body.night-mode .jp-InputArea-editor,
@@ -8233,12 +8230,23 @@ body.night-mode .note-toc a.active {
 }
 
 body.night-mode .theme-toggle {
-  background: #ffffff;
-  box-shadow: 0 0 0 3px #ffffff;
+  background: transparent;
+  box-shadow: none;
 }
 
 body.night-mode .theme-toggle::after {
   display: none;
+}
+
+body.night-mode .theme-toggle::before {
+  content: "☀";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 1;
+  transform: translate(-50%, -50%);
 }
 
 /* =========================

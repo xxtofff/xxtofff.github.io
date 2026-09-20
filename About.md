@@ -37,15 +37,15 @@ My research focused on black hole–dark matter spacetimes and the study of geod
 - **Inflation Forecasting** — Forecasted monthly Philippine inflation using SARIMA, SARIMAX, and XGBoost with engineered macroeconomic features, benchmarking against naive and seasonal-naive baselines.
 - **Marketing A/B Testing** — Estimated the causal effect of an advertising treatment using bootstrap confidence intervals and permutation testing, and distinguished the treatment effect from non-causal exposure associations.
 
-More details and code are available on my [Projects](/projects/) page.
+More details and code are available on my [GitHub](https://github.com/xxtofff/) page.
 
-## Other Experience
+<!-- ## Other Experience
 
 Before and alongside my research work, I have worked as a mathematics and physics tutor, teaching high school and undergraduate students through online and in-person sessions. I have also written undergraduate mathematics solutions for a large student base and worked as an office clerk for the Municipal Disaster Risk Reduction and Management Office in Amadeo, Cavite.
 
 ## Leadership & Activities
 
-I was a member of the Academic Affairs and Internal Affairs committees of the UP Physics Association, where I developed sample examinations and review materials for undergraduate physics courses and conducted a LaTeX workshop introducing scientific typesetting to students.
+I was a member of the Academic Affairs and Internal Affairs committees of the UP Physics Association, where I developed sample examinations and review materials for undergraduate physics courses and conducted a LaTeX workshop introducing scientific typesetting to students. -->
 
 ## Publications
 

@@ -400,6 +400,23 @@ body.night-mode {
   --jp-ui-font-color2: #bdbdbd !important;
   --jp-content-font-color1: #d4d4d4 !important;
   --jp-content-font-color2: #bdbdbd !important;
+  --jp-mirror-editor-keyword-color: #ff79c6 !important;
+  --jp-mirror-editor-atom-color: #bd93f9 !important;
+  --jp-mirror-editor-number-color: #bd93f9 !important;
+  --jp-mirror-editor-def-color: #50fa7b !important;
+  --jp-mirror-editor-variable-color: #f8f8f2 !important;
+  --jp-mirror-editor-variable-2-color: #8be9fd !important;
+  --jp-mirror-editor-variable-3-color: #8be9fd !important;
+  --jp-mirror-editor-property-color: #8be9fd !important;
+  --jp-mirror-editor-operator-color: #ff79c6 !important;
+  --jp-mirror-editor-comment-color: #6272a4 !important;
+  --jp-mirror-editor-string-color: #f1fa8c !important;
+  --jp-mirror-editor-builtin-color: #8be9fd !important;
+  --jp-mirror-editor-meta-color: #ff79c6 !important;
+  --jp-mirror-editor-qualifier-color: #50fa7b !important;
+  --jp-mirror-editor-tag-color: #ff79c6 !important;
+  --jp-mirror-editor-attribute-color: #50fa7b !important;
+  --jp-mirror-editor-punctuation-color: #f8f8f2 !important;
 }
 
 body.night-mode .jp-CodeCell,

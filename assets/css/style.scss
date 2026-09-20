@@ -50,14 +50,15 @@ body {
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
 }
 
 .nav-name img {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
   display: block;
+  flex-shrink: 0;
 }
 
 .nav-name:hover {

@@ -9408,6 +9408,55 @@ This collection forms a reference distribution for $\hat\beta_i$ under the null 
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d46be32">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Coefficient-of-determination,-again"><strong>Coefficient of determination, again</strong><a class="anchor-link" href="#Coefficient-of-determination,-again">¶</a></h3><p>We can also assess the quality of our model through the sum-of-squares decomposition, but now in vector form. Let $\mathbf{\bar Y}$ denote a vector whose components are all equal to the mean value of $\mathbf Y$. We decompose the TSS as follows:</p>
+<p>\begin{align*}
+(\mathbf{Y}-\mathbf{\bar Y})^T(\mathbf{Y}-\mathbf{\bar Y})
+&amp;=(\mathbf{Y}-\mathbf{\hat Y}+\mathbf{\hat Y}-\mathbf{\bar Y})^T(\mathbf{Y}-\mathbf{\hat Y}+\mathbf{\hat Y}-\mathbf{\bar Y})\\
+&amp;=(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{Y}-\mathbf{\hat Y})
++(\mathbf{\hat Y}-\mathbf{\bar Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y})
++2(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y}).
+\end{align*}</p>
+<p>We see that this should be the usual decomposition $\text{TSS}=\text{RSS}+\text{ESS}$ except for the final cross term. Our intuition tells us that this should somehow reduce to zero. Decomposing this term further:</p>
+<p>\begin{align*}
+(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y})
+&amp;=(\mathbf{Y}^T\mathbf{\hat Y}-\mathbf{\hat Y}^T\mathbf{\hat Y})
++(\mathbf{\hat Y}^T\mathbf{\bar Y}-\mathbf{Y}^T\mathbf{\bar Y}).
+\end{align*}</p>
+<p>The first term is zero, and we can see this by rewriting $\mathbf{\hat Y}$ in terms of the projection matrix, $\mathbf P$, which is symmetric and idempotent:</p>
+<p>\begin{align*}
+\mathbf{\hat Y}^T\mathbf{\hat Y}
+&amp;=(\mathbf{P}\mathbf{Y})^T(\mathbf{P}\mathbf{Y})\\
+&amp;=\mathbf{Y}^T\mathbf{P}^T\mathbf{P}\mathbf{Y}\\
+&amp;=\mathbf{Y}^T\mathbf{P}^2\mathbf{Y}\\
+&amp;=\mathbf{Y}^T\mathbf{P}\mathbf{Y}\\
+&amp;=\mathbf{Y}^T\mathbf{\hat Y}.
+\end{align*}</p>
+<p>The second term is zero since it reduces to the sum of the residuals. Observe that</p>
+<p>\begin{align*}
+\mathbf{\hat Y}^T\mathbf{\bar Y}-\mathbf{Y}^T\mathbf{\bar Y}
+&amp;=-(\mathbf{Y}-\mathbf{\hat Y})^T\mathbf{\bar Y}\\
+&amp;=-\mathbf{e}^T\mathbf{\bar Y}.
+\end{align*}</p>
+<p>The point where it reduces to zero becomes apparent if we write this as an explicit summation:</p>
+<p>\begin{align*}
+\mathbf{e}^T\mathbf{\bar Y}&amp;=\bar Y\sum_i e_i.
+\end{align*}</p>
+<p>Recall that $\mathbf X^T \mathbf e=0$. The first column of $\mathbf X$ is a column of ones, so the first element of $\mathbf X^T \mathbf e$ is necessarily the sum of the residuals, which is zero. Our intuition is therefore correct, leading us to the usual decomposition:</p>
+<p>\begin{align*}
+(\mathbf{Y}-\mathbf{\bar Y})^T(\mathbf{Y}-\mathbf{\bar Y})
+&amp;=(\mathbf{Y}-\mathbf{\hat Y})^T(\mathbf{Y}-\mathbf{\hat Y})
++(\mathbf{\hat Y}-\mathbf{\bar Y})^T(\mathbf{\hat Y}-\mathbf{\bar Y}).
+\end{align*}</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=40346619">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9468,7 +9517,7 @@ This collection forms a reference distribution for $\hat\beta_i$ under the null 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Regression explains much of the variation in the data.</p>
+<p>Linear regression explains much of the variation in the data.</p>
 </div>
 </div>
 </div>

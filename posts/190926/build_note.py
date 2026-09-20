@@ -18,8 +18,6 @@ favicon_html = """
 
 header_css = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap');
-
 html {
   box-sizing: border-box;
 }
@@ -29,7 +27,7 @@ html {
 }
 
 body.jp-Notebook {
-  padding-top: 64px !important;
+  padding-top: 99px !important;
   overflow-x: hidden !important;
 }
 
@@ -41,7 +39,7 @@ body.jp-Notebook {
   top: 0;
   left: 0;
   z-index: 1000;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .nav-inner {
@@ -56,28 +54,26 @@ body.jp-Notebook {
 
 .nav-name {
   color: #ffffff !important;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-size: 24px !important;
   font-weight: 500 !important;
-  line-height: 1.5 !important;
   text-decoration: none !important;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .nav-name img {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
+  transform: scale(1.35);
 }
 
 .nav-name:hover {
   color: #ffffff !important;
-  font-weight: 700 !important;
 }
 
 .nav-links {
@@ -88,17 +84,13 @@ body.jp-Notebook {
 
 .nav-links a {
   color: #d0d0d0 !important;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-size: 18px !important;
-  font-weight: 400 !important;
-  line-height: 1.5 !important;
   text-decoration: none !important;
   white-space: nowrap;
 }
 
 .nav-links a:hover {
   color: #ffffff !important;
-  font-weight: 700 !important;
 }
 
 .toc-toggle {
@@ -223,12 +215,12 @@ body.jp-Notebook > .note-layout > main {
 
 .note-toc {
   position: sticky;
-  top: 89px;
+  top: 99px;
   width: 230px;
   max-height: calc(100vh - 115px);
   overflow-y: auto;
   align-self: start;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   transform: translateX(0);
   transition: transform 0.35s ease, opacity 0.25s ease;
 }
@@ -260,7 +252,6 @@ body.jp-Notebook > .note-layout > main {
   display: block;
   padding: 4px 0;
   color: #777777 !important;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 1.45;
@@ -307,11 +298,19 @@ body.toc-hidden .note-toc {
 }
 
 @media screen and (max-width: 960px) {
+  body.jp-Notebook {
+    padding-top: 160px !important;
+  }
+
+  .site-nav {
+    height: 125px;
+  }
+
   .nav-inner {
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 18px 20px 18px 65px;
+    padding: 18px 20px;
     flex-direction: column;
     justify-content: center;
     gap: 14px;
@@ -319,6 +318,7 @@ body.toc-hidden .note-toc {
 
   .nav-name {
     font-size: 22px !important;
+    gap: 10px;
   }
 
   .nav-links {
@@ -339,6 +339,7 @@ body.toc-hidden .note-toc {
 
   .note-toc {
     width: 210px;
+    top: 160px;
   }
 
   body.toc-hidden .note-layout {
@@ -388,17 +389,22 @@ body.toc-hidden .note-toc {
 }
 
 @media screen and (max-width: 500px) {
+  body.jp-Notebook {
+    padding-top: 155px !important;
+  }
+
   .site-nav {
     height: 120px;
   }
 
   .nav-inner {
-    padding: 16px 15px 16px 60px;
-    gap: 24px;
+    padding: 16px 15px;
+    gap: 12px;
   }
 
   .nav-name {
     font-size: 21px !important;
+    gap: 9px;
   }
 
   .nav-links {
@@ -409,10 +415,6 @@ body.toc-hidden .note-toc {
 
   .nav-links a {
     font-size: 16px !important;
-  }
-
-  body.jp-Notebook {
-    padding-top: 120px !important;
   }
 
   .toc-toggle {
@@ -438,6 +440,7 @@ header_html = """
       <img src="/assets/images/favicon_inv.png" alt="">
       <span>Adam Mendoza</span>
     </a>
+
     <div class="nav-links">
       <a href="/about/">About</a>
       <a href="/notes/">Notes</a>

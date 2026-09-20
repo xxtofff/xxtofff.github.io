@@ -454,6 +454,48 @@ body.night-mode .jp-RenderedHTMLCommon td {
   border-color: #444444 !important;
 }
 
+body.night-mode .dataframe,
+body.night-mode table.dataframe {
+  background: #252525 !important;
+  color: #d4d4d4 !important;
+}
+
+body.night-mode .dataframe thead,
+body.night-mode table.dataframe thead {
+  background: #252525 !important;
+  color: #f0f0f0 !important;
+}
+
+body.night-mode .dataframe tbody,
+body.night-mode table.dataframe tbody {
+  background: #252525 !important;
+}
+
+body.night-mode .dataframe tr,
+body.night-mode table.dataframe tr {
+  background: #252525 !important;
+  color: #d4d4d4 !important;
+}
+
+body.night-mode .dataframe th,
+body.night-mode .dataframe td,
+body.night-mode table.dataframe th,
+body.night-mode table.dataframe td {
+  background: #252525 !important;
+  color: #d4d4d4 !important;
+  border-color: #444444 !important;
+}
+
+body.night-mode .dataframe tbody tr:nth-child(even),
+body.night-mode table.dataframe tbody tr:nth-child(even) {
+  background: #2b2b2b !important;
+}
+
+body.night-mode .dataframe tbody tr:nth-child(odd),
+body.night-mode table.dataframe tbody tr:nth-child(odd) {
+  background: #252525 !important;
+}
+
 body.night-mode .note-toc {
   background: #1e1e1e !important;
 }

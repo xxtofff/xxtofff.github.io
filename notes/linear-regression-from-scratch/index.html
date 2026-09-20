@@ -7938,6 +7938,88 @@ body.jp-Notebook {
   transform: translateY(0) rotate(-45deg);
 }
 
+.theme-toggle {
+  padding: 0;
+  margin: 0 0 0 0;
+  border: none;
+  background: transparent;
+  color: #d0d0d0;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: #ffffff;
+}
+
+body.night-mode {
+  background: #1e1e1e !important;
+  color: #d4d4d4 !important;
+}
+
+body.night-mode .note-layout,
+body.night-mode .jp-Notebook {
+  background: #1e1e1e !important;
+}
+
+body.night-mode .jp-RenderedHTMLCommon,
+body.night-mode .jp-RenderedHTMLCommon p,
+body.night-mode .jp-RenderedHTMLCommon li,
+body.night-mode .jp-RenderedHTMLCommon td,
+body.night-mode .jp-RenderedHTMLCommon th {
+  color: #d4d4d4 !important;
+}
+
+body.night-mode .jp-RenderedHTMLCommon h1,
+body.night-mode .jp-RenderedHTMLCommon h2,
+body.night-mode .jp-RenderedHTMLCommon h3,
+body.night-mode .jp-RenderedHTMLCommon h4 {
+  color: #f0f0f0 !important;
+}
+
+body.night-mode .jp-RenderedHTMLCommon a {
+  color: #78b7ff !important;
+}
+
+body.night-mode .jp-RenderedHTMLCommon blockquote {
+  color: #bdbdbd !important;
+  border-left-color: #555555 !important;
+}
+
+body.night-mode .jp-RenderedHTMLCommon pre,
+body.night-mode .jp-RenderedHTMLCommon code {
+  background: #2a2a2a !important;
+  color: #e0e0e0 !important;
+}
+
+body.night-mode .jp-RenderedHTMLCommon table {
+  color: #d4d4d4 !important;
+}
+
+body.night-mode .jp-RenderedHTMLCommon th,
+body.night-mode .jp-RenderedHTMLCommon td {
+  border-color: #444444 !important;
+}
+
+body.night-mode .note-toc {
+  background: #1e1e1e !important;
+}
+
+body.night-mode .note-toc-title {
+  color: #f0f0f0 !important;
+}
+
+body.night-mode .note-toc a {
+  color: #999999 !important;
+}
+
+body.night-mode .note-toc a:hover,
+body.night-mode .note-toc a.active {
+  color: #ffffff !important;
+}
+
 /* =========================
    Notebook layout
    ========================= */
@@ -8247,6 +8329,7 @@ body.toc-hidden .note-toc {
     <div class="nav-links">
       <a href="/about/">About</a>
       <a href="/notes/">Notes</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle night mode">☾</button>
     </div>
   </div>
 </nav>
@@ -9557,6 +9640,6 @@ This collection forms a reference distribution for $\hat\beta_i$ under the null 
 </div>
 </main></div>
 <script>
-document.addEventListener("DOMContentLoaded",()=>{const tocList=document.getElementById("toc-list"),toggle=document.getElementById("toc-toggle"),headings=document.querySelectorAll("main h2, main h3");headings.forEach((heading,index)=>{if(!heading.id)heading.id="section-"+index;const li=document.createElement("li");li.className=heading.tagName.toLowerCase()==="h3"?"toc-h3":"toc-h2";const link=document.createElement("a");link.href="#"+heading.id;link.textContent=heading.textContent.replace("¶","").trim();link.addEventListener("click",()=>{heading.scrollIntoView({behavior:"smooth",block:"start"});});li.appendChild(link);tocList.appendChild(li);});toggle.addEventListener("click",()=>{const hidden=document.body.classList.toggle("toc-hidden");toggle.classList.toggle("active",!hidden);toggle.setAttribute("aria-expanded",String(!hidden));toggle.setAttribute("aria-label",hidden?"Show table of contents":"Hide table of contents");});const links=Array.from(tocList.querySelectorAll("a"));const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.remove("active"));const activeLink=tocList.querySelector('a[href="#'+entry.target.id+'"]');if(activeLink)activeLink.classList.add("active");}});},{rootMargin:"-90px 0px -70% 0px",threshold:0});headings.forEach(heading=>observer.observe(heading));});
+document.addEventListener("DOMContentLoaded",()=>{const tocList=document.getElementById("toc-list"),toggle=document.getElementById("toc-toggle"),themeToggle=document.getElementById("theme-toggle"),headings=document.querySelectorAll("main h2, main h3");if(localStorage.getItem("note-theme")==="dark"){document.body.classList.add("night-mode");themeToggle.textContent="☀";}themeToggle.addEventListener("click",()=>{const dark=document.body.classList.toggle("night-mode");localStorage.setItem("note-theme",dark?"dark":"light");themeToggle.textContent=dark?"☀":"☾";});headings.forEach((heading,index)=>{if(!heading.id)heading.id="section-"+index;const li=document.createElement("li");li.className=heading.tagName.toLowerCase()==="h3"?"toc-h3":"toc-h2";const link=document.createElement("a");link.href="#"+heading.id;link.textContent=heading.textContent.replace("¶","").trim();link.addEventListener("click",()=>{heading.scrollIntoView({behavior:"smooth",block:"start"});});li.appendChild(link);tocList.appendChild(li);});toggle.addEventListener("click",()=>{const hidden=document.body.classList.toggle("toc-hidden");toggle.classList.toggle("active",!hidden);toggle.setAttribute("aria-expanded",String(!hidden));toggle.setAttribute("aria-label",hidden?"Show table of contents":"Hide table of contents");});const links=Array.from(tocList.querySelectorAll("a"));const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.remove("active"));const activeLink=tocList.querySelector('a[href="#'+entry.target.id+'"]');if(activeLink)activeLink.classList.add("active");}});},{rootMargin:"-90px 0px -70% 0px",threshold:0});headings.forEach(heading=>observer.observe(heading));});
 </script></body>
 </html>

@@ -63,6 +63,10 @@ body.jp-Notebook {
   gap: 12px;
 }
 
+.nav-name span {
+  font-weight: 400 !important;
+}
+
 .nav-name img {
   width: 32px;
   height: 32px;
@@ -74,6 +78,10 @@ body.jp-Notebook {
 
 .nav-name:hover {
   color: #ffffff !important;
+  font-weight: 400 !important;
+}
+
+.nav-name:hover span {
   font-weight: 400 !important;
 }
 

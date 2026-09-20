@@ -12,15 +12,6 @@ html = generated_file.read_text(encoding="utf-8")
 
 html = html.replace("<title>linear_regression_from_scratch</title>", "<title>Linear Regression from Scratch</title>", 1)
 
-html = html.replace("""MathJax.Hub.Config({
-                TeX: {
-                    equationNumbers: {""", """MathJax.Hub.Config({
-                TeX: {
-                    Macros: {
-                        bm: ["{\\\\boldsymbol{#1}}", 1]
-                    },
-                    equationNumbers: {""", 1)
-
 favicon_html = """
 <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 """
@@ -31,7 +22,6 @@ header_css = """
 
 html {
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 *, *:before, *:after {
@@ -62,7 +52,6 @@ body.jp-Notebook {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 .nav-name {
@@ -84,18 +73,17 @@ body.jp-Notebook {
   object-fit: contain;
   display: block;
   flex-shrink: 0;
-  transform: scale(1.25);
 }
 
 .nav-name:hover {
   color: #ffffff !important;
+  font-weight: 700 !important;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 42px;
-  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 .nav-links a {
@@ -110,11 +98,8 @@ body.jp-Notebook {
 
 .nav-links a:hover {
   color: #ffffff !important;
+  font-weight: 700 !important;
 }
-
-/* =========================
-   Hamburger menu
-   ========================= */
 
 .toc-toggle {
   position: fixed;
@@ -135,8 +120,6 @@ body.jp-Notebook {
   top: 16px;
   width: 26px;
   height: 3px;
-  margin: 0;
-  padding: 0;
   background: #d0d0d0;
   border-radius: 2px;
   transform-origin: 13px 1.5px;
@@ -172,10 +155,6 @@ body.jp-Notebook {
   transform: translateY(0) rotate(-45deg);
 }
 
-/* =========================
-   Notebook layout
-   ========================= */
-
 .note-layout {
   width: 1510px;
   max-width: calc(100% - 40px);
@@ -195,14 +174,6 @@ body.jp-Notebook > .note-layout > main {
   margin: 0 !important;
   padding: 0 !important;
 }
-
-.jp-Notebook {
-  background: var(--jp-layout-color0);
-}
-
-/* =========================
-   Notebook typography
-   ========================= */
 
 .jp-RenderedHTMLCommon {
   font-size: 18px !important;
@@ -250,10 +221,6 @@ body.jp-Notebook > .note-layout > main {
   overflow-x: auto;
 }
 
-/* =========================
-   Table of contents
-   ========================= */
-
 .note-toc {
   position: sticky;
   top: 89px;
@@ -264,7 +231,6 @@ body.jp-Notebook > .note-layout > main {
   font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   transform: translateX(0);
   transition: transform 0.35s ease, opacity 0.25s ease;
-  will-change: transform, opacity;
 }
 
 .note-toc-title {
@@ -311,10 +277,6 @@ body.jp-Notebook > .note-layout > main {
   font-weight: 700 !important;
 }
 
-/* =========================
-   Hidden TOC
-   ========================= */
-
 body.toc-hidden .note-layout {
   grid-template-columns: 0 minmax(0, 1fr);
   column-gap: 0;
@@ -325,10 +287,6 @@ body.toc-hidden .note-toc {
   opacity: 0;
   pointer-events: none;
 }
-
-/* =========================
-   Responsive
-   ========================= */
 
 @media screen and (max-width: 1550px) {
   .note-layout {
@@ -415,7 +373,6 @@ body.toc-hidden .note-toc {
     border: 1px solid var(--jp-border-color2);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     z-index: 900;
-    transform: translateX(0);
   }
 
   body.toc-hidden .note-toc {
@@ -481,7 +438,6 @@ header_html = """
       <img src="/assets/images/favicon_inv.png" alt="">
       <span>Adam Mendoza</span>
     </a>
-
     <div class="nav-links">
       <a href="/about/">About</a>
       <a href="/notes/">Notes</a>
@@ -508,17 +464,9 @@ document.addEventListener("DOMContentLoaded",()=>{const tocList=document.getElem
 </script>"""
 
 html = html.replace("</head>", favicon_html + header_css + "</head>", 1)
-
 html = html.replace("<main>", '<div class="note-layout">' + toc_html + "<main>", 1)
-
 html = html.replace("</main>", "</main></div>", 1)
-
-html = html.replace(
-    '<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">',
-    '<body class="jp-Notebook toc-hidden" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">' + header_html,
-    1
-)
-
+html = html.replace('<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">', '<body class="jp-Notebook toc-hidden" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">' + header_html, 1)
 html = html.replace("</body>", toc_script + "</body>", 1)
 
 html_file.write_text(html, encoding="utf-8")

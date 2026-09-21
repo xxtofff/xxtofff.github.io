@@ -8795,13 +8795,13 @@ Y_i = \frac{1}{4}X_i + \epsilon_i
 <p>It is important to stress that reporting a confidence interval is often more informative than reporting a point estimate alone for two reasons. First, it acknowledges that our estimate is subject to sampling uncertainty and that factors not captured by our model can affect the observed data. Second, the interval provides a range of plausible values for the parameter under the chosen confidence-interval procedure, allowing us to account for uncertainty when making decisions or preparing for different possible scenarios.</p>
 <h3 id="Hypothesis-Testing"><strong>Hypothesis Testing</strong><a class="anchor-link" href="#Hypothesis-Testing">¶</a></h3><p>We can now ask a more specific question: is the association we observe between $X$ and $Y$ sufficiently strong that it would be unusual to obtain such a slope if there were actually no association between the two variables? Our confidence interval already gives us some information about this. If the interval excludes $0$, then $0$ is not among the parameter values contained within the interval under the chosen confidence-interval procedure. This suggests that a zero slope is inconsistent with the range of values supported by our interval. However, the confidence interval and the hypothesis test are answering slightly different questions, so we will examine the question directly using a <strong>permutation test</strong>.</p>
 <p>The idea is to construct a reference distribution for our slope under a null hypothesis in which there is no association between $X$ and $Y$. We begin with the data we actually observed and then randomly shuffle the $Y$ values while leaving the $X$ values fixed. This destroys the original pairing between $X$ and $Y$. If there was a genuine association between them, that association should disappear when the pairing is randomly rearranged. What remains is the kind of slope we might obtain purely from chance when there is no association.</p>
-<p>This is the key idea behind the permutation test: rather than trying to simulate repeated samples from the population, as we did with the bootstrap, we simulate what our data would look like <strong>under the null hypothesis</strong>. We then ask whether our observed slope looks unusual relative to this null distribution. Permuting $Y$ relative to $X$ is appropriate when the null hypothesis implies that the observations are exchangeable under this permutation. In this simple setting, the procedure provides a reference distribution for the slope under the null hypothesis of <strong>no association</strong> ($H_0: X\perp Y$). In other words, if there are no sort of relation <strong>at all</strong>, be it linear or not. We then construct the <em>null distribution</em> of our chosen statistic and use it to compare against our observed result. The method is as follows:</p>
+<p>This is the key idea behind the permutation test: rather than trying to simulate repeated samples from the population, as we did with the bootstrap, we simulate what our data would look like <strong>under the null hypothesis</strong>. We then ask whether our observed slope looks unusual relative to this null distribution. Permuting $Y$ relative to $X$ is appropriate when the null hypothesis implies that the observations are exchangeable under this permutation. In this simple setting, the procedure provides a reference distribution for the slope under the null hypothesis of <strong>no association</strong>, i.e. $H_0: X\perp Y$. In other words, if there are no sort of relation <strong>at all</strong>, be it linear or not. We then construct the <em>null distribution</em> of our chosen statistic and use it to compare against our observed result. The method is as follows:</p>
 <ol>
 <li>Fit the OLS model to the original dataset and record the observed slope $\hat\beta_1$.</li>
 <li>Randomly permute the $Y_i$ values and pair them with the corresponding $X_i$ values. The original relationship between the observations is therefore broken while the individual $X$ and $Y$ values themselves are preserved.</li>
 <li>Fit the OLS model to the permuted dataset and record the resulting slope $\hat\beta_1^*$.</li>
 <li>Repeat the previous steps $R$ times, producing $\{\hat\beta_1^*\}_{r=1}^R$. This collection of slopes forms our approximation to the <strong>null distribution</strong> of the slope.</li>
-<li>Compare the observed slope to this null distribution. For a two-sided test, we count the number of permuted slopes that are at least as extreme as the observed slope, i.e., satisfying
+<li>Compare the observed slope to this null distribution. For a two-sided test, we count the number of permuted slopes that are at least as extreme as the observed slope, i.e. satisfying
 $$|\hat\beta_1^*| \geq |\hat\beta_1|.$$</li>
 </ol>
 <p>The proportion of permutations at least as extreme as our observed result gives us an estimate of the probability of obtaining a result this extreme under the null hypothesis. We will report the Monte Carlo $p$-value</p>
@@ -9021,7 +9021,7 @@ X_{ik}Y_i&amp;=X_{ik}X_{ij}\hat\beta_j.
 \mathbf P^{-1}\mathbf P^2 &amp;= \mathbf P^{-1}\mathbf P,\\
 \mathbf P &amp;= \mathbf I.
 \end{align*}</p>
-<p>Therefore, the projection matrix is invertible, i.e., $\mathbf P^{-1}$ exists, if and only if $\mathbf P=\mathbf I$. As a final note for this section, we will establish this geometric fact: <strong>the residual is orthogonal to every column of the design matrix</strong>. Observe that</p>
+<p>Therefore, the projection matrix is invertible, i.e. $\mathbf P^{-1}$ exists, if and only if $\mathbf P=\mathbf I$. As a final note for this section, we will establish this geometric fact: <strong>the residual is orthogonal to every column of the design matrix</strong>. Observe that</p>
 <p>\begin{align*}
 \mathbf X^T \mathbf e
 &amp;=[\mathbf X^T-\mathbf X^T\mathbf X(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T]\mathbf{Y},\\
@@ -9509,7 +9509,7 @@ Because the fitted values remain unchanged, the relationships between $Y$ and th
 \{\hat\beta_i^*\}_{r=1}^R.
 \end{align*}
 This collection forms a reference distribution for $\hat\beta_i$ under the null hypothesis that the predictor being tested contributes no additional effect after accounting for the nuisance predictors.</li>
-<li>Calculate the proportion of $\hat\beta_i^*$ values that are at least as extreme as the observed $\hat\beta_i$, i.e., satisfying
+<li>Calculate the proportion of $\hat\beta_i^*$ values that are at least as extreme as the observed $\hat\beta_i$, i.e. satisfying
 \begin{align*}
 |\hat\beta_i^*|
 \geq
@@ -9529,6 +9529,8 @@ This collection forms a reference distribution for $\hat\beta_i$ under the null 
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">fwl_pval</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">r_iter</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">):</span>
+
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">67</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
         <span class="n">features</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
@@ -9593,7 +9595,7 @@ This collection forms a reference distribution for $\hat\beta_i$ under the null 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>The p-values for each coefficient are [9.99900010e-05 9.99900010e-05 9.99900010e-05 8.56614339e-01]
+<pre>The p-values for each coefficient are [9.99900010e-05 9.99900010e-05 9.99900010e-05 8.56814319e-01]
 </pre>
 </div>
 </div>

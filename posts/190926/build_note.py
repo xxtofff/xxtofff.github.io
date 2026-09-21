@@ -523,7 +523,7 @@ body.night-mode .theme-toggle::after {
 }
 
 body.night-mode .theme-toggle::before {
-  content: "☀";
+  content: "☀︎";
   position: absolute;
   top: 50%;
   left: 50%;

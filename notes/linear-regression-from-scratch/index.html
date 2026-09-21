@@ -8298,7 +8298,7 @@ body.night-mode .theme-toggle::after {
 }
 
 body.night-mode .theme-toggle::before {
-  content: "☀";
+  content: "☀︎";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -9724,6 +9724,7 @@ This collection forms a reference distribution for $\hat\beta_i$ under the null 
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Epilogue"><strong>Epilogue</strong><a class="anchor-link" href="#Epilogue">¶</a></h2><p>This notebook is an attempt to dissect regression and build it from the ground up. To recap, we began with the simple linear model and derived the ordinary least-squares estimator by minimizing the sum of squared residuals. We then generalized it to a multiple-predictor setting, where the geometry of least squares emerges naturally. Despite the seemingly convoluted form of the optimal parameters, we managed to recover an interpretation for them through the Frisch–Waugh–Lovell result: each coefficient represents the association between its corresponding predictor and the target after accounting for the remaining predictors. More importantly, we have moved beyond the simple derivation of the best-fit line. We applied a healthy dose of skepticism and investigated whether the patterns we observe are distinguishable from what might arise by chance. We have covered a lot of ground, but it is not enough. We have shown how to perform regression and interpret its results, but we have not really discussed when regression fails. That is a discussion for another time.</p>
 <p>We end with a qualification: the methods we have discussed above are purely pedagogical. A learned practitioner of the field may raise their eyebrows, for there are more efficient and numerically robust methods for calculating the same quantities we dealt with. It is true, and these methods have long been implemented in usable packages and functions by our numerical ancestors (no offense). I would recommend using them for their efficiency, especially when dealing with large datasets. We can obtain the parameters we want in much less time and move on to answering our research questions. For all practical purposes, learning how to use these tools is often sufficient. They are means to an end. However, there is a difference between learning and understanding. Knowing <strong>how</strong> to use a tool is one thing; knowing <strong>why</strong>, <strong>when</strong>, and <strong>where</strong> to use it is another.</p>
+<p><strong>Note</strong>: If you spot any errors, inconsistencies, or typos, please feel free to send me an <a href="mailto:work.admmndz@gmail.com">e-mail</a>. Corrections are very much appreciated.</p>
 </div>
 </div>
 </div>

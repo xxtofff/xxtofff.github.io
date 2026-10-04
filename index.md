@@ -15,5 +15,5 @@ If you have any opportunities in data science, quantitative analysis, or related
 **LinkedIn:** [linkedin.com/in/gadmendoza](https://www.linkedin.com/in/gadmendoza/)
 
 <div class="duck-container">
-  <img src="/assets/images/duck.gif" alt="Duck" width="120">
+  <img src="/assets/images/duck.gif" alt="Duck" width="100">
 </div>

@@ -13,3 +13,7 @@ If you have any opportunities in data science, quantitative analysis, or related
 
 **Email:** [work.admmndz@gmail.com](mailto:work.admmndz@gmail.com)  
 **LinkedIn:** [linkedin.com/in/gadmendoza](https://www.linkedin.com/in/gadmendoza/)
+
+<div class="duck-container">
+  <img src="/assets/duck.gif" alt="Duck">
+</div>

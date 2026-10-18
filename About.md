@@ -34,7 +34,7 @@ My research focused on black hole–dark matter spacetimes and the study of geod
 ## Projects
 
 - [**Inflation Forecasting**](https://github.com/xxtofff/Inflation-Forecasting/) — Forecasted monthly Philippine inflation using SARIMA, SARIMAX, and XGBoost with engineered macroeconomic features, benchmarking against naive and seasonal-naive baselines.
-- [**Customer Churn Prediction**](https://github.com/xxtofff/Customer-Churn/) — Developed and tuned Logistic Regression, Random Forest, XGBoost, CatBoost, and LightGBM models using cross-validation and a stratified holdout set. LightGBM achieved the best holdout F1 score of 0.855, while XGBoost achieved the highest recall of 0.792.
+- [**Customer Churn Prediction**](https://github.com/xxtofff/Customer-Churn/) — Developed and tuned Logistic Regression, Random Forest, XGBoost, CatBoost, and LightGBM classifiers using five-fold cross-validation and stratified train, validation, and test splits. Selected Random Forest based on validation F1; it achieved 0.833 F1, 0.880 precision, and 0.792 recall on the untouched test set.
 - [**Marketing A/B Testing**](https://github.com/xxtofff/Marketing-AB-Testing/) — Estimated the causal effect of an advertising treatment using bootstrap confidence intervals and permutation testing, and distinguished the treatment effect from non-causal exposure associations.
 
 More details and code are available on my [GitHub](https://github.com/xxtofff/) page.
